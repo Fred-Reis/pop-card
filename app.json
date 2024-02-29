@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "key-card",
+    "slug": "key-card",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
