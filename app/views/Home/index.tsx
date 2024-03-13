@@ -11,7 +11,7 @@ export const Home = () => {
       <Text style={styles.message}>Seu Limite</Text>
       <Balance value="10.000,00" />
       <MainCard number="0000 0000 0000 ****" />
-      <Text style={styles.message}>Home</Text>
+      {/* <Text style={styles.message}>Home</Text> */}
     </SafeAreaView>
   );
 };
