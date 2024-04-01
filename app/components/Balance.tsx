@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   currency: {
-    fontFamily: "Alexandria",
+    // fontFamily: "Alexandria",
     fontWeight: "400",
     fontSize: 20,
     marginRight: 24,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     color: "#3e3e3e",
   },
   value: {
-    fontFamily: "Alexandria",
+    // fontFamily: "Alexandria",
     fontWeight: "400",
     fontSize: 50,
     color: "#3e3e3e",

@@ -1,17 +1,18 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-import { Home } from "../views/Home";
-import { AddCard } from "../views/AddCard";
-import { History } from "../views/History";
-import { Header } from "../components/Header";
 import {
   Image,
   StyleSheet,
   Text,
-  TouchableOpacity,
+  Platform,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
+import { Home } from "@/views/Home";
+import { AddCard } from "@/views/AddCard";
+import { History } from "@/views/History";
+import { Header } from "@/components/Header";
 
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +21,7 @@ export const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        header: (props) => <Header />,
+        header: ({ route }) => <Header name={route.name} />,
         tabBarShowLabel: false,
         tabBarStyle: {
           ...styles.tabBar,
@@ -60,7 +61,7 @@ export const MyTabs = () => {
         }}
       />
       <Tab.Screen
-        name="History"
+        name="Histórico"
         component={History}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -81,7 +82,7 @@ const CustomTabIcon = ({ focused, icon, text }) => (
     style={{
       alignItems: "center",
       justifyContent: "center",
-      top: 10,
+      top: Platform.OS === "ios" ? 15 : 0,
       bottom: 10,
       gap: 4,
     }}
