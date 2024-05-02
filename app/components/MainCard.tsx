@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, Image, StyleSheet, View, Text } from "react-native";
+import { Image, StyleSheet, View, Text } from "react-native";
 
 import card from "@/assets/card.png";
 
@@ -24,23 +24,24 @@ const styles = StyleSheet.create({
 
   card: {
     position: "relative",
+    height: 200,
   },
 
   title: {
     color: "#3e3e3e",
     fontSize: 35,
-    marginBottom: 14,
+    marginBottom: 20,
     fontWeight: "bold",
   },
 
   number: {
     position: "absolute",
     bottom: 25,
-    left: 40,
-    color: "#3e3e3e",
+    left: 80,
+    color: "#3d3d3d",
     letterSpacing: 2,
     fontSize: 20,
-    marginBottom: 25,
-    alignSelf: "center",
+    // marginBottom: 25,
+    // alignSelf: "center",
   },
 });

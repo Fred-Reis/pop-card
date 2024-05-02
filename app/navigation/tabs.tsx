@@ -53,7 +53,7 @@ export const MyTabs = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "#fff" : "#3e3e3e",
+                tintColor: focused ? "rgba(48,249,201,0.8)" : "#fff",
               }}
             />
           ),
@@ -93,12 +93,12 @@ const CustomTabIcon = ({ focused, icon, text }) => (
       style={{
         width: 25,
         height: 25,
-        tintColor: focused ? "#fff" : "#3e3e3e",
+        tintColor: focused ? "rgba(48,249,201,0.8)" : "#FFF",
       }}
     />
     <Text
       style={{
-        color: focused ? "#fff" : "#3e3e3e",
+        color: focused ? "rgba(48,249,201,0.8)" : "#FFF",
         fontSize: 12,
       }}
     >
@@ -121,7 +121,7 @@ const CustomTabButtonIcon = ({ children, onPress }: any) => (
         width: 90,
         height: 90,
         borderRadius: 45,
-        backgroundColor: "#2e8dcf",
+        backgroundColor: "rgba(239,144,55, 1)",
         borderColor: "#F2F2F2",
         borderWidth: 5,
       }}
@@ -134,7 +134,7 @@ const CustomTabButtonIcon = ({ children, onPress }: any) => (
 const styles = StyleSheet.create({
   tabBar: {
     position: "absolute",
-    backgroundColor: "#2e8dcf",
+    backgroundColor: "rgba(239,144,55, 1)",
     bottom: 25,
     left: 20,
     right: 20,

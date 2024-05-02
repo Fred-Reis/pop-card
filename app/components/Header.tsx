@@ -42,10 +42,10 @@ export const Header = ({ name }: HeaderProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 10,
+    paddingTop: 25,
     width: "100%",
     height: 120,
-    backgroundColor: "#2e8dcf",
+    backgroundColor: "rgba(48,249,201,0.7)",
     alignItems: "center",
     justifyContent: "space-between",
     flexDirection: "row",

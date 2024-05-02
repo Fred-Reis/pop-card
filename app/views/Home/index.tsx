@@ -1,23 +1,40 @@
-import React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import React, { useRef } from "react";
+import {
+  Button,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+
+import { LinearGradient } from "expo-linear-gradient";
+
 import { Balance } from "@/components/Balance";
 import { MainCard } from "@/components/MainCard";
 import { CardList } from "@/components/CardList";
 
 export const Home = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text style={styles.message}>Seu Limite</Text>
-      <Balance value="10.000,00" />
-      <MainCard number="0000" />
-      <CardList />
+    <SafeAreaView style={StyleSheet.absoluteFill}>
+      {/* <LinearGradient
+      colors={["rgba(48,249,201,0.5)", "#fff", "#fff", "rgba(239,144,55,0.5)"]}
+      style={StyleSheet.absoluteFill}
+    > */}
+      <ScrollView>
+        <Text style={styles.message}>Seu Limite</Text>
+        <Balance value="10.000,00" />
+        <MainCard number="0000" />
+        <CardList />
+        {/* </LinearGradient> */}
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height: "100%",
+    // height: "100%",
   },
 
   message: {

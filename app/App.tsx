@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { StatusBar } from "expo-status-bar";
-import { NavigationContainer } from "@react-navigation/native";
 
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { AppNavigator } from "@/navigation";
+import { Splash } from "./views/Splash";
 import { Home } from "./views/Home";
-import { MyTabs } from "./navigation/tabs";
+
+Splash;
 
 export default function App() {
+  const [splashCompleted, setSplashCompleted] = useState(false);
+
   const [fontsLoaded, fontError] = useFonts({
     Alexandria: require("./assets/fonts/alexandria.ttf"),
   });
@@ -18,9 +21,14 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <>
       <StatusBar style="light" />
-      <MyTabs />
-    </NavigationContainer>
+      {splashCompleted ? (
+        <AppNavigator />
+      ) : (
+        // <Home />
+        <Splash onComplete={setSplashCompleted} />
+      )}
+    </>
   );
 }
