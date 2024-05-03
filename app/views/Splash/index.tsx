@@ -51,8 +51,7 @@ export const Splash = ({ onComplete }) => {
             color: "#fff",
           }}
         >
-          Aquele que habita no esconderijo do altíssimo à sombra do onipotente
-          descansará.
+          Tudo posso naqule que me fortalece.
         </Text>
       </LinearGradient>
     </View>

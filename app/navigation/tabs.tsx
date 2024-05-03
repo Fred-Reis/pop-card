@@ -122,7 +122,7 @@ const CustomTabButtonIcon = ({ children, onPress }: any) => (
         height: 90,
         borderRadius: 45,
         backgroundColor: "rgba(239,144,55, 1)",
-        borderColor: "#F2F2F2",
+        borderColor: "#dddddd",
         borderWidth: 5,
       }}
     >

@@ -16,7 +16,7 @@ import { CardList } from "@/components/CardList";
 
 export const Home = () => {
   return (
-    <SafeAreaView style={StyleSheet.absoluteFill}>
+    <SafeAreaView style={[StyleSheet.absoluteFill, styles.container]}>
       {/* <LinearGradient
       colors={["rgba(48,249,201,0.5)", "#fff", "#fff", "rgba(239,144,55,0.5)"]}
       style={StyleSheet.absoluteFill}
@@ -34,7 +34,7 @@ export const Home = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // height: "100%",
+    backgroundColor: "#dddddd",
   },
 
   message: {
