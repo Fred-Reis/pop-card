@@ -1,0 +1,40 @@
+{
+  "cards": [
+    {
+      "id": 1,
+      "name": "Nubank",
+      "number": "1234",
+      "color": "#993399"
+    },
+    {
+      "id": "2",
+      "name": "C6",
+      "number": "1234",
+      "color": "#1e1e1e"
+    },
+    {
+      "id": "3",
+      "name": "Inter",
+      "number": "1234",
+      "color": "#FF7B00"
+    },
+    {
+      "id": "4",
+      "name": "Banco Brasil",
+      "number": "1234",
+      "color": "#FCFC34"
+    },
+    {
+      "id": "5",
+      "name": "Santander",
+      "number": "1234",
+      "color": "#DC121A"
+    },
+    {
+      "id": "6",
+      "name": "Neom",
+      "number": "1234",
+      "color": "#0ACDEB"
+    }
+  ]
+}

@@ -17,16 +17,11 @@ import { CardList } from "@/components/CardList";
 export const Home = () => {
   return (
     <SafeAreaView style={[StyleSheet.absoluteFill, styles.container]}>
-      {/* <LinearGradient
-      colors={["rgba(48,249,201,0.5)", "#fff", "#fff", "rgba(239,144,55,0.5)"]}
-      style={StyleSheet.absoluteFill}
-    > */}
       <ScrollView>
         <Text style={styles.message}>Seu Limite</Text>
         <Balance value="10.000,00" />
         <MainCard number="0000" />
         <CardList />
-        {/* </LinearGradient> */}
       </ScrollView>
     </SafeAreaView>
   );
