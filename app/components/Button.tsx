@@ -13,7 +13,7 @@ export const CusttomButton = ({
   type = "default",
 }: ButtonProps) => {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={action}>
       <View style={[styles.container, styles[type]]}>
         <Text style={styles.message}>{message}</Text>
       </View>
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 10,
-    padding: 15,
+    padding: 10,
     width: 200,
     borderColor: "#fff",
     borderWidth: 2,
