@@ -1,4 +1,5 @@
-import { StyleSheet, Text, TextInput } from "react-native";
+import { Text, TextInput } from "react-native";
+import { styles } from "./styles";
 import { Controller } from "react-hook-form";
 
 export const FormInput = ({ control, name, ...otherProps }) => {
@@ -24,21 +25,3 @@ export const FormInput = ({ control, name, ...otherProps }) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: "#fff",
-    fontSize: 18,
-    padding: 10,
-    borderRadius: 10,
-    marginBottom: 3,
-    width: 200,
-    textAlign: "center",
-    color: "#3e3e3e",
-  },
-
-  errorMessage: {
-    marginBottom: 10,
-    color: "#ec3030",
-  },
-});

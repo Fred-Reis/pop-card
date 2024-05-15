@@ -1,20 +1,6 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 
-type BalanceProps = {
-  value: string;
-};
-
-export const Balance = ({ value }: BalanceProps) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.currency}>R$</Text>
-      <Text style={styles.value}>{value}</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     width: "100%",
     padding: 0,

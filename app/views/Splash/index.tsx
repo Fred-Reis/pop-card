@@ -1,11 +1,16 @@
-import React, { useRef } from "react";
 import { LogBox, StyleSheet, Text, View } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
 import BootSplash from "react-native-bootsplash";
 import LottieView from "lottie-react-native";
 
-export const Splash = ({ onComplete }) => {
+import { styles } from "./styles";
+
+interface Props {
+  onComplete: (x: boolean) => void;
+}
+
+export const Splash = ({ onComplete }: Props) => {
   LogBox.ignoreAllLogs();
 
   async function onAnimationLoaded() {
@@ -20,11 +25,7 @@ export const Splash = ({ onComplete }) => {
     <View style={StyleSheet.absoluteFill}>
       <LinearGradient
         colors={["rgba(48,249,201,0.8)", "rgba(239,144,55,0.8)"]}
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-          flex: 1,
-        }}
+        style={styles.container}
       >
         <LottieView
           onAnimationLoaded={onAnimationLoaded}
@@ -32,27 +33,10 @@ export const Splash = ({ onComplete }) => {
           autoPlay
           loop={false}
           speed={1.2}
-          style={{
-            width: 550,
-            height: 2500,
-            backgroundColor: "transparent",
-
-            marginTop: 200,
-          }}
+          style={styles.animation}
           source={require("@/assets/animation.json")}
         />
-        <Text
-          style={{
-            fontSize: 14,
-            textAlign: "center",
-            position: "absolute",
-            bottom: 25,
-            marginHorizontal: 25,
-            color: "#fff",
-          }}
-        >
-          Tudo posso naqule que me fortalece.
-        </Text>
+        <Text style={styles.message}>Tudo posso naqule que me fortalece.</Text>
       </LinearGradient>
     </View>
   );

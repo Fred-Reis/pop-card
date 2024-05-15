@@ -1,5 +1,6 @@
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button } from "react-native";
+
+import { styles } from "./styles";
 
 export const History = () => {
   return (
@@ -9,18 +10,3 @@ export const History = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  message: {
-    color: "#3e3e3e",
-    fontSize: 25,
-    marginBottom: 25,
-  },
-});

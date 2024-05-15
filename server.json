@@ -36,5 +36,34 @@
       "number": "1234",
       "color": "#0ACDEB"
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "Fred",
+      "surname": "Reis",
+      "account_number": "123456",
+      "password": "123456",
+      "token": "asd7asc87asc78a7c986s8975a8sc",
+      "balance": "10.000",
+      "currency": "BRL",
+      "cards": [
+        {
+          "id": "1",
+          "number": "1234123412341234",
+          "type": "2"
+        },
+        {
+          "id": "2",
+          "number": "1234123412341234",
+          "type": "3"
+        },
+        {
+          "id": "3",
+          "number": "1234123412341234",
+          "type": "6"
+        }
+      ]
+    }
   ]
 }

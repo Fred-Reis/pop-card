@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigation } from "@react-navigation/native";
 
-import { FormInput } from "@/components/FormInput";
-import { CusttomButton } from "@/components/Button";
+import { FormInput, CusttomButton } from "@/components";
+
+import { styles } from "./styles";
 
 const formSchema = z.object({
   account: z
@@ -22,11 +23,12 @@ export const LoginForm = () => {
     mode: "onSubmit",
     resolver: zodResolver(formSchema),
   });
+
   const { navigate } = useNavigation();
 
   function onSubmit(data: any) {
     console.log(data);
-    // navigate("TabHome")
+    navigate("TabHome" as never);
   }
 
   return (
@@ -56,15 +58,3 @@ export const LoginForm = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  label: {
-    marginBottom: 10,
-    color: "#3e3e3e",
-  },
-});

@@ -1,8 +1,6 @@
 import {
   Image,
   StyleSheet,
-  Text,
-  Platform,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
@@ -13,6 +11,11 @@ import { Home } from "@/views/Home";
 import { AddCard } from "@/views/AddCard";
 import { History } from "@/views/History";
 import { Header } from "@/components/Header";
+
+import { CustomTabIcon } from "./components/CustomTabIcon";
+import { CustomTabButtonIcon } from "./components/CustomTabButonIcon";
+
+import { styles } from "./styles";
 
 const Tab = createBottomTabNavigator();
 
@@ -76,81 +79,3 @@ export const MyTabs = () => {
     </Tab.Navigator>
   );
 };
-
-const CustomTabIcon = ({ focused, icon, text }) => (
-  <View
-    style={{
-      alignItems: "center",
-      justifyContent: "center",
-      top: Platform.OS === "ios" ? 15 : 0,
-      bottom: 10,
-      gap: 4,
-    }}
-  >
-    <Image
-      source={icon}
-      resizeMode="contain"
-      style={{
-        width: 25,
-        height: 25,
-        tintColor: focused ? "rgba(48,249,201,0.8)" : "#FFF",
-      }}
-    />
-    <Text
-      style={{
-        color: focused ? "rgba(48,249,201,0.8)" : "#FFF",
-        fontSize: 12,
-      }}
-    >
-      {text}
-    </Text>
-  </View>
-);
-
-const CustomTabButtonIcon = ({ children, onPress }: any) => (
-  <TouchableWithoutFeedback
-    onPress={onPress}
-    style={{
-      justifyContent: "center",
-      alignItems: "center",
-    }}
-  >
-    <View
-      style={{
-        top: -45,
-        width: 90,
-        height: 90,
-        borderRadius: 45,
-        backgroundColor: "rgba(239,144,55, 1)",
-        borderColor: "#dddddd",
-        borderWidth: 5,
-      }}
-    >
-      {children}
-    </View>
-  </TouchableWithoutFeedback>
-);
-
-const styles = StyleSheet.create({
-  tabBar: {
-    position: "absolute",
-    backgroundColor: "rgba(239,144,55, 1)",
-    bottom: 25,
-    left: 20,
-    right: 20,
-    elevation: 0,
-    borderRadius: 15,
-    height: 90,
-  },
-
-  shadow: {
-    shadowColor: "#3e3e3e",
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    elevation: 5,
-  },
-});

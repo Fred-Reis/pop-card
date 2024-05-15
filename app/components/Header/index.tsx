@@ -1,5 +1,9 @@
-import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
+
+import { styles } from "./styles";
+
+import hamburguer from "@/assets/icons/hamburguer.png";
+import user from "@/assets/icons/user.png";
 
 type HeaderProps = {
   name: string;
@@ -10,7 +14,7 @@ export const Header = ({ name }: HeaderProps) => {
     <View style={styles.container}>
       <TouchableOpacity>
         <Image
-          source={require("../assets/icons/hamburguer.png")}
+          source={hamburguer}
           resizeMode="contain"
           style={{
             width: 30,
@@ -21,7 +25,7 @@ export const Header = ({ name }: HeaderProps) => {
       <Text style={styles.title}>{name}</Text>
       <TouchableOpacity>
         <Image
-          source={require("../assets/icons/user.png")}
+          source={user}
           resizeMode="contain"
           style={{
             width: 40,
@@ -32,20 +36,3 @@ export const Header = ({ name }: HeaderProps) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 25,
-    width: "100%",
-    height: 120,
-    backgroundColor: "rgba(48,249,201,0.7)",
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-    paddingHorizontal: 20,
-  },
-  title: {
-    color: "#fff",
-    fontSize: 25,
-  },
-});
