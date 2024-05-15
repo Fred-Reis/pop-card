@@ -3,46 +3,28 @@ import {
   StyleSheet,
   Text,
   KeyboardAvoidingView,
-  TextInput,
+  Platform,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 
 import { LinearGradient } from "expo-linear-gradient";
-import { CusttomButton } from "@/components/Button";
 
 import logo from "@/assets/logo.png";
+import { LoginForm } from "./LoginForm";
 
 export const Login = () => {
-  const { navigate } = useNavigation();
-
   return (
     <LinearGradient
       colors={["rgba(48,249,201,0.5)", "rgba(239,144,55,0.5)"]}
       style={StyleSheet.absoluteFill}
     >
-      <KeyboardAvoidingView style={styles.container}>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.container}
+      >
         <Image source={logo} style={styles.logo} resizeMode="contain" />
         <Text style={styles.message}>Login</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="account"
-          maxLength={6}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <Text style={styles.label}>Número da conta</Text>
-
-        <TextInput
-          style={styles.input}
-          placeholder="password "
-          maxLength={6}
-          autoCapitalize="none"
-          autoCorrect={false}
-        />
-        <Text style={styles.label}>Senha</Text>
-
-        <CusttomButton message="Login" action={() => navigate("TabHome")} />
+        <LoginForm />
       </KeyboardAvoidingView>
     </LinearGradient>
   );
