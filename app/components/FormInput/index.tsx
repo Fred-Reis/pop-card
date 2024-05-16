@@ -1,6 +1,7 @@
 import { Text, TextInput } from "react-native";
-import { styles } from "./styles";
 import { Controller } from "react-hook-form";
+
+import { styles } from "./styles";
 
 export const FormInput = ({ control, name, ...otherProps }) => {
   return (

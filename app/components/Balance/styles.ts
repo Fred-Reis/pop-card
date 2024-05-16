@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "center",
     flexDirection: "row",
+    marginBottom: 10,
   },
   currency: {
     // fontFamily: "Alexandria",

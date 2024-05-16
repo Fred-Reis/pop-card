@@ -1,20 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-  },
-
   card: {
-    position: "relative",
+    width: "100%",
     height: 200,
-  },
-
-  title: {
-    color: "#3e3e3e",
-    fontSize: 35,
-    marginBottom: 20,
-    fontWeight: "bold",
+    marginVertical: 20,
   },
 
   number: {
@@ -24,7 +14,5 @@ export const styles = StyleSheet.create({
     color: "#3d3d3d",
     letterSpacing: 2,
     fontSize: 20,
-    // marginBottom: 25,
-    // alignSelf: "center",
   },
 });
