@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { LogBox, StyleSheet, Text, View } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -5,6 +7,8 @@ import BootSplash from "react-native-bootsplash";
 import LottieView from "lottie-react-native";
 
 import { styles } from "./styles";
+import { useFetchAllCards, useFetchAllUSers } from "@/server/queries";
+import { useCardListStore, useUsersListStore } from "@/store/backEndDataStore";
 
 interface Props {
   onComplete: (x: boolean) => void;
@@ -20,6 +24,29 @@ export const Splash = ({ onComplete }: Props) => {
   function onCompleted() {
     onComplete(true);
   }
+
+  /**
+   *  THAT'S A PROVISIONAL SOLUTION
+   */
+
+  const { data: cards, isLoading: cardsLoading } = useFetchAllCards();
+  const { data: users, isLoading: userLoading } = useFetchAllUSers();
+
+  const { setAllCardsList, setIsLoading } = useCardListStore();
+  const { setAllUsersList, setIsLoading: setUserLoading } = useUsersListStore();
+
+  useEffect(() => {
+    if (!cardsLoading && !userLoading) {
+      setIsLoading(cardsLoading);
+      setAllCardsList(cards);
+      setAllUsersList(users);
+      setUserLoading(userLoading);
+    }
+  }, [cardsLoading, userLoading]);
+
+  /**
+   *
+   */
 
   return (
     <View style={StyleSheet.absoluteFill}>

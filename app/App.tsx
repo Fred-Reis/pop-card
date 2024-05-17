@@ -5,6 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 
 import queryClient from "./server/api/queryClient";
+
 import { AppNavigator } from "@/navigation";
 import { Splash } from "@/views/Splash";
 

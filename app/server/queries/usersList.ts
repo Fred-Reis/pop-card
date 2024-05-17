@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { API } from ".";
+import { API } from "./url";
 
 async function getAllUsers() {
   const { data } = await API.GET_USERS();
@@ -7,7 +7,7 @@ async function getAllUsers() {
   return data;
 }
 
-export default function useFetchAllUSers() {
+export function useFetchAllUSers() {
   return useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => getAllUsers(),

@@ -1,17 +1,13 @@
 import { memo } from "react";
 import { View, FlatList, Text, Image } from "react-native";
 
-import { styles } from "./styles";
-
 import card from "@/assets/default-card.png";
 import chip from "@/assets/chip.png";
 
-interface CardProps {
-  id: string;
-  name: string;
-  number: string;
-  color: string;
-}
+import { CardProps } from "@/types/cardDTO";
+
+import { styles } from "./styles";
+
 interface Props {
   data: CardProps[];
 }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { API } from ".";
+import { API } from "./url";
 
 async function getAllCards() {
   const { data } = await API.GET_CARDS();
@@ -7,7 +7,7 @@ async function getAllCards() {
   return data;
 }
 
-export default function useFetchAllCards() {
+export function useFetchAllCards() {
   return useQuery({
     queryKey: ["allCards"],
     queryFn: async () => getAllCards(),
