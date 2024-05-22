@@ -42,6 +42,7 @@
       "id": "1",
       "name": "Fred",
       "surname": "Reis",
+      "email": "123@example.com",
       "account_number": "123456",
       "password": "123456",
       "token": "asd7asc87asc78a7c986s8975a8sc",

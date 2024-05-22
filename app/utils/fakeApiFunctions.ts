@@ -1,11 +1,20 @@
-import { useFetchAllCards } from "@/server/queries";
-import { useCardListStore } from "@/store/backEndDataStore";
+import { useUsersListStore } from "@/store/backEndDataStore";
 
-export function handleGetCards() {
-  const { data, isLoading } = useFetchAllCards();
+interface LoginProps {
+  account: string;
+  password: string;
+}
+export function handleFakeLogin({ account, password }: LoginProps) {
+  console.log("func", account, password);
+  const { allUsersList } = useUsersListStore();
 
-  const { setAllCardsList, setIsLoading } = useCardListStore();
+  const user = allUsersList.find((user) => user.account_number === account);
 
-  setIsLoading(isLoading);
-  setAllCardsList(data);
+  if (user.password !== password) {
+    console.log("ERRR");
+
+    throw Error("Email ou senha inválidos");
+  }
+
+  return user;
 }

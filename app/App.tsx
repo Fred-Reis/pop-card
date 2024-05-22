@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import { QueryClientProvider } from "@tanstack/react-query";
+import ToastManager from "toastify-react-native";
 import { StatusBar } from "expo-status-bar";
 import { useFonts } from "expo-font";
 
@@ -23,6 +24,8 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <StatusBar style="light" />
+      <ToastManager />
+
       {splashCompleted ? (
         <AppNavigator />
       ) : (

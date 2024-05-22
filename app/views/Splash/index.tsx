@@ -7,7 +7,7 @@ import BootSplash from "react-native-bootsplash";
 import LottieView from "lottie-react-native";
 
 import { styles } from "./styles";
-import { useFetchAllCards, useFetchAllUSers } from "@/server/queries";
+import { useFetchAllCards, useFetchAllUsers } from "@/server/queries";
 import { useCardListStore, useUsersListStore } from "@/store/backEndDataStore";
 
 interface Props {
@@ -30,7 +30,7 @@ export const Splash = ({ onComplete }: Props) => {
    */
 
   const { data: cards, isLoading: cardsLoading } = useFetchAllCards();
-  const { data: users, isLoading: userLoading } = useFetchAllUSers();
+  const { data: users, isLoading: userLoading } = useFetchAllUsers();
 
   const { setAllCardsList, setIsLoading } = useCardListStore();
   const { setAllUsersList, setIsLoading: setUserLoading } = useUsersListStore();

@@ -7,7 +7,7 @@ async function getAllUsers() {
   return data;
 }
 
-export function useFetchAllUSers() {
+export function useFetchAllUsers() {
   return useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => getAllUsers(),
