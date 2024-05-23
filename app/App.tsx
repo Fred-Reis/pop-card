@@ -9,8 +9,11 @@ import queryClient from "./server/api/queryClient";
 
 import { AppNavigator } from "@/navigation";
 import { Splash } from "@/views/Splash";
+import { useWindowDimensions } from "react-native";
 
 export default function App() {
+  const { width } = useWindowDimensions();
+
   const [splashCompleted, setSplashCompleted] = useState(false);
 
   const [fontsLoaded, fontError] = useFonts({
@@ -24,7 +27,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <StatusBar style="light" />
-      <ToastManager />
+      <ToastManager width={width * 0.9} animationStyle={"rightInOut"} />
 
       {splashCompleted ? (
         <AppNavigator />

@@ -2,10 +2,11 @@ import { Text, View } from "react-native";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-import { Toast } from "toastify-react-native";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigation } from "@react-navigation/native";
 
+import { useToasts } from "@/utils/services/toast";
 import { FormInput, CusttomButton } from "@/components";
 import { useUsersListStore } from "@/store/backEndDataStore";
 
@@ -34,10 +35,6 @@ export const LoginForm = () => {
 
   const { navigate } = useNavigation();
 
-  const showToasts = () => {
-    Toast.success("Promised is resolved");
-  };
-
   /**
    *  PROVISIONAL SOLUTION
    */
@@ -45,13 +42,9 @@ export const LoginForm = () => {
   const { allUsersList } = useUsersListStore();
 
   function handleFakeLogin({ account, password }: LoginProps) {
-    showToasts();
-
     const user = allUsersList.find((user) => user.account_number === account);
 
-    if (user?.password !== password) {
-      console.log("ERRR");
-
+    if (!user || user?.password !== password) {
       throw Error("Email ou senha inválidos");
     }
 
@@ -59,14 +52,23 @@ export const LoginForm = () => {
   }
 
   function onSubmit(data: any) {
-    console.log(data);
     try {
       const result = handleFakeLogin(data);
+
+      useToasts({
+        type: "success",
+        title: "Login",
+        message: "Login efetuado com sucesso",
+      });
+      // navigate("TabHome" as never);
       console.log("result", result);
     } catch (error) {
-      console.log("errr", error);
+      useToasts({
+        type: "error",
+        title: "Ops... Algo saiu errado!!",
+        message: error.message,
+      });
     }
-    // navigate("TabHome" as never);
   }
 
   return (
