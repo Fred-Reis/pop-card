@@ -2,16 +2,14 @@ import { Text, View } from "react-native";
 
 import { z } from "zod";
 import { useForm } from "react-hook-form";
-
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigation } from "@react-navigation/native";
 
+import { useUsersListStore, useUserStore } from "@/store";
 import { useToasts } from "@/utils/services/toast";
+import { saveEncryptedValue } from "@/utils/storage";
 import { FormInput, CusttomButton } from "@/components";
-import { useUsersListStore } from "@/store/backEndDataStore";
 
 import { styles } from "./styles";
-// import { handleFakeLogin } from "@/utils/fakeApiFunctions";
 
 const formSchema = z.object({
   account: z
@@ -33,12 +31,11 @@ export const LoginForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  const { navigate } = useNavigation();
-
   /**
    *  PROVISIONAL SOLUTION
    */
 
+  const { setUser } = useUserStore();
   const { allUsersList } = useUsersListStore();
 
   function handleFakeLogin({ account, password }: LoginProps) {
@@ -53,15 +50,20 @@ export const LoginForm = () => {
 
   function onSubmit(data: any) {
     try {
-      const result = handleFakeLogin(data);
+      const user = { ...handleFakeLogin(data) };
 
       useToasts({
         type: "success",
         title: "Login",
         message: "Login efetuado com sucesso",
       });
-      // navigate("TabHome" as never);
-      console.log("result", result);
+
+      saveEncryptedValue("user_token", user.token);
+
+      delete user["token"];
+      delete user["password"];
+
+      setUser(user);
     } catch (error) {
       useToasts({
         type: "error",
