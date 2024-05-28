@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Text, View } from "react-native";
 
 import { z } from "zod";
@@ -10,6 +11,9 @@ import { saveEncryptedValue } from "@/utils/storage";
 import { FormInput, CusttomButton } from "@/components";
 
 import { styles } from "./styles";
+
+import visible from "@/assets/icons/visible.png";
+import hidden from "@/assets/icons/hidden.png";
 
 const formSchema = z.object({
   cpf: z
@@ -26,6 +30,7 @@ interface LoginProps {
 }
 
 export const LoginForm = () => {
+  const [visiblePassword, setVisiblePassword] = useState(false);
   const { control, handleSubmit } = useForm({
     mode: "onSubmit",
     resolver: zodResolver(formSchema),
@@ -46,6 +51,10 @@ export const LoginForm = () => {
     }
 
     return user;
+  }
+
+  function togglePasswordVisibility() {
+    setVisiblePassword(!visiblePassword);
   }
 
   function onSubmit(data: any) {
@@ -95,6 +104,9 @@ export const LoginForm = () => {
         maxLength={6}
         autoCapitalize="none"
         autoCorrect={false}
+        handleToggle={togglePasswordVisibility}
+        icon={visiblePassword ? hidden : visible}
+        secureTextEntry={!visiblePassword}
       />
       <Text style={styles.label}>Senha</Text>
 

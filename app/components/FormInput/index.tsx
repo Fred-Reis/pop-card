@@ -1,5 +1,12 @@
-import { Text, TextInput } from "react-native";
-import { Controller } from "react-hook-form";
+import {
+  Image,
+  ImageSourcePropType,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
+import { Control, Controller, FieldValues } from "react-hook-form";
 import { MaskedTextInput } from "react-native-mask-text";
 
 import { styles } from "./styles";
@@ -8,15 +15,19 @@ interface FormInputProps {
   masked?: boolean;
   mask?: string;
   name: string;
-  control: any;
+  icon?: ImageSourcePropType;
+  control: Control<FieldValues>;
+  handleToggle?: () => void;
   [x: string]: any;
 }
 
 export const FormInput = ({
   masked,
   mask,
-  control,
   name,
+  icon,
+  control,
+  handleToggle,
   ...otherProps
 }: FormInputProps) => {
   return (
@@ -28,26 +39,33 @@ export const FormInput = ({
         fieldState: { error },
       }) => (
         <>
-          {masked ? (
-            <MaskedTextInput
-              mask={mask}
-              style={styles.input}
-              onChangeText={(text, rawText) => {
-                onChange(rawText);
-                value = { rawText };
-              }}
-              onBlur={onBlur}
-              {...otherProps}
-            />
-          ) : (
-            <TextInput
-              style={styles.input}
-              value={value}
-              onChangeText={onChange}
-              onBlur={onBlur}
-              {...otherProps}
-            />
-          )}
+          <View style={styles.inputContainer}>
+            {masked ? (
+              <MaskedTextInput
+                mask={mask}
+                style={styles.input}
+                onChangeText={(text, rawText) => {
+                  onChange(rawText);
+                  value = { rawText };
+                }}
+                onBlur={onBlur}
+                {...otherProps}
+              />
+            ) : (
+              <TextInput
+                style={styles.input}
+                value={value}
+                onChangeText={onChange}
+                onBlur={onBlur}
+                {...otherProps}
+              />
+            )}
+            {icon && (
+              <TouchableWithoutFeedback onPress={handleToggle}>
+                <Image source={icon} style={styles.icon} />
+              </TouchableWithoutFeedback>
+            )}
+          </View>
           {error && <Text style={styles.errorMessage}>{error.message}</Text>}
         </>
       )}
