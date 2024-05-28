@@ -12,16 +12,16 @@ import { FormInput, CusttomButton } from "@/components";
 import { styles } from "./styles";
 
 const formSchema = z.object({
-  account: z
+  cpf: z
     .string({ required_error: "Campo obrigatório" })
-    .length(6, "O número da conta precisa ter 6 dígitos"),
+    .length(11, "O número do CPF precisa ter 11 dígitos"),
   password: z
     .string({ required_error: "Campo obrigatório" })
     .length(6, "A senha precisa ter 6 dígitos"),
 });
 
 interface LoginProps {
-  account: string;
+  cpf: string;
   password: string;
 }
 
@@ -38,11 +38,11 @@ export const LoginForm = () => {
   const { setUser } = useUserStore();
   const { allUsersList } = useUsersListStore();
 
-  function handleFakeLogin({ account, password }: LoginProps) {
-    const user = allUsersList.find((user) => user.account_number === account);
+  function handleFakeLogin({ cpf, password }: LoginProps) {
+    const user = allUsersList.find((user) => user.cpf === cpf);
 
     if (!user || user?.password !== password) {
-      throw Error("Email ou senha inválidos");
+      throw Error("CPF ou senha inválidos");
     }
 
     return user;
@@ -76,20 +76,22 @@ export const LoginForm = () => {
   return (
     <View style={styles.container}>
       <FormInput
+        masked
+        mask="999.999.999-99"
         control={control}
-        name={"account"}
-        placeholder="account"
-        maxLength={6}
+        name={"cpf"}
+        placeholder="999.999.999-99"
+        maxLength={14}
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType="numeric"
       />
-      <Text style={styles.label}>Número da conta</Text>
+      <Text style={styles.label}>Número do CPF</Text>
 
       <FormInput
         control={control}
         name={"password"}
-        placeholder="password "
+        placeholder="senha"
         maxLength={6}
         autoCapitalize="none"
         autoCorrect={false}

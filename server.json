@@ -41,6 +41,7 @@
     {
       "id": "1",
       "name": "Fred",
+      "cpf": "12345678910",
       "surname": "Reis",
       "email": "123@example.com",
       "account_number": "123456",

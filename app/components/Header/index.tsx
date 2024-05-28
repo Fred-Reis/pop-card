@@ -19,7 +19,7 @@ export const Header = ({ name }: HeaderProps) => {
   function handleLogout() {
     setUser(null);
     useToasts({
-      type: "success",
+      type: "info",
       title: "Logout",
       message: "Você foi desconectado",
     });
@@ -37,7 +37,9 @@ export const Header = ({ name }: HeaderProps) => {
           }}
         />
       </TouchableOpacity>
+
       <Text style={styles.title}>{name}</Text>
+
       <TouchableOpacity onPress={handleLogout}>
         <Image
           source={logout}
