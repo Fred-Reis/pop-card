@@ -13,12 +13,11 @@ export const Home = () => {
 
   return (
     <SafeAreaView style={[StyleSheet.absoluteFill, styles.container]}>
-      <ScrollView>
-        <Text style={styles.message}>Seu Limite</Text>
-        <Balance value="10.000,00" />
-        <MainCard number="0000" />
-        <CardList data={allCardsList} />
-      </ScrollView>
+      <Text style={styles.greating}>Olá Fulano</Text>
+      <Text style={styles.message}>Seu Limite</Text>
+      <Balance value="10.000,00" />
+      <MainCard number="0000" />
+      <CardList data={allCardsList} />
     </SafeAreaView>
   );
 };

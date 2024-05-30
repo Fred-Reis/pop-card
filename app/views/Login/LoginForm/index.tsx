@@ -5,9 +5,10 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useUsersListStore, useUserStore } from "@/store";
 import { useToasts } from "@/utils/services/toast";
 import { saveEncryptedValue } from "@/utils/storage";
+import { useUsersListStore, useUserStore } from "@/store";
+
 import { FormInput, CusttomButton } from "@/components";
 
 import { styles } from "./styles";

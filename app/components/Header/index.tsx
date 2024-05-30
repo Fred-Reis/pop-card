@@ -19,7 +19,7 @@ export const Header = ({ name }: HeaderProps) => {
   function handleLogout() {
     setUser(null);
     useToasts({
-      type: "info",
+      type: "warn",
       title: "Logout",
       message: "Você foi desconectado",
     });
@@ -28,27 +28,13 @@ export const Header = ({ name }: HeaderProps) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity>
-        <Image
-          source={user}
-          resizeMode="contain"
-          style={{
-            width: 40,
-            height: 40,
-          }}
-        />
+        <Image source={user} resizeMode="contain" style={styles.icon} />
       </TouchableOpacity>
 
       <Text style={styles.title}>{name}</Text>
 
       <TouchableOpacity onPress={handleLogout}>
-        <Image
-          source={logout}
-          resizeMode="contain"
-          style={{
-            width: 40,
-            height: 40,
-          }}
-        />
+        <Image source={logout} resizeMode="contain" style={styles.icon} />
       </TouchableOpacity>
     </View>
   );

@@ -5,11 +5,19 @@ export const styles = StyleSheet.create({
     backgroundColor: "#dddddd",
   },
 
+  greating: {
+    color: "#3e3e3e",
+    fontSize: 18,
+    marginBottom: 5,
+    marginTop: 15,
+    marginLeft: 25,
+  },
+
   message: {
     color: "#3e3e3e",
-    fontSize: 25,
-    marginBottom: 25,
-    marginTop: 20,
+    fontSize: 22,
+    fontWeight: "500",
+    marginBottom: 10,
     textAlign: "center",
   },
 });
