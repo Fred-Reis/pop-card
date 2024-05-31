@@ -10,10 +10,10 @@ import { styles } from "./styles";
 import { useToasts } from "@/utils/services/toast";
 
 type HeaderProps = {
-  name: string;
+  title: string;
 };
 
-export const Header = ({ name }: HeaderProps) => {
+export const Header = ({ title }: HeaderProps) => {
   const { setUser } = useUserStore();
 
   function handleLogout() {
@@ -31,7 +31,7 @@ export const Header = ({ name }: HeaderProps) => {
         <Image source={user} resizeMode="contain" style={styles.icon} />
       </TouchableOpacity>
 
-      <Text style={styles.title}>{name}</Text>
+      <Text style={styles.title}>{title}</Text>
 
       <TouchableOpacity onPress={handleLogout}>
         <Image source={logout} resizeMode="contain" style={styles.icon} />

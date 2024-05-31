@@ -3,4 +3,5 @@ export interface CardProps {
   name: string;
   number: string;
   color: string;
+  nick_name: string;
 }

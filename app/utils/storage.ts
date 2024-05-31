@@ -12,12 +12,13 @@ const app_key = "@pop_bank/";
  */
 export async function loadEncryptedValue(key: string): Promise<unknown | null> {
   const encryptedKey = `${app_key}encrypted_${key}`;
+  const decrypt = (encryptedValue: any) =>
+    CryptoJS.AES.decrypt(encryptedValue, encryptionKey).toString(
+      CryptoJS.enc.Utf8
+    );
+
   try {
     const almostThere = await AsyncStorage.getItem(encryptedKey);
-    const decrypt = (encryptedValue: any) =>
-      CryptoJS.AES.decrypt(encryptedValue, encryptionKey).toString(
-        CryptoJS.enc.Utf8
-      );
 
     if (almostThere) {
       return JSON.parse(decrypt(almostThere));

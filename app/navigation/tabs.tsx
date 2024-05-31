@@ -10,7 +10,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "@/views/Home";
 import { AddCard } from "@/views/AddCard";
 import { History } from "@/views/History";
-import { Header } from "@/components/Header";
+import { Header } from "./components/FullHeader";
 
 import { CustomTabIcon } from "./components/CustomTabIcon";
 import { CustomTabButtonIcon } from "./components/CustomTabButonIcon";
@@ -24,7 +24,7 @@ export const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        header: ({ route }) => <Header name={route.name} />,
+        header: ({ route }) => <Header title={route.name} />,
         tabBarShowLabel: false,
         tabBarStyle: {
           ...styles.tabBar,

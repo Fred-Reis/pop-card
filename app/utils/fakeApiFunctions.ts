@@ -5,7 +5,6 @@ interface LoginProps {
   password: string;
 }
 export function handleFakeLogin({ account, password }: LoginProps) {
-  console.log("func", account, password);
   const { allUsersList } = useUsersListStore();
 
   const user = allUsersList.find((user) => user.account_number === account);
@@ -17,4 +16,16 @@ export function handleFakeLogin({ account, password }: LoginProps) {
   }
 
   return user;
+}
+
+export function handleFakeMapUserCards(
+  userCardsList: any[],
+  allCardsList: any[]
+) {
+  const cards = userCardsList.map((userCard) => {
+    const card = allCardsList.find((card) => card?.id === userCard?.type);
+    return { ...userCard, color: card.color, name: card.name };
+  });
+
+  return cards;
 }
