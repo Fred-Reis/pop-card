@@ -2,12 +2,11 @@ import React from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { Login } from "@/views/Login";
 import { useUserStore } from "@/store";
 
 import { MyTabs } from "./tabs";
-import { CardDetails } from "@/views/CardDetails";
 import { Header } from "./components/Header";
+import { Login, CardDetails } from "@/views";
 
 const Stack = createNativeStackNavigator();
 
@@ -27,7 +26,18 @@ export const AppStack = () => {
             component={MyTabs}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="CardDetails" component={CardDetails} />
+          <Stack.Screen
+            name="CardDetails"
+            component={CardDetails}
+            options={{
+              title: "Detalhes do Cartão",
+              header: ({ route }) => (
+                <Header
+                  title={`Detalhe cartão ${route.params?.item?.nick_name}`}
+                />
+              ),
+            }}
+          />
         </Stack.Group>
       ) : (
         <Stack.Screen

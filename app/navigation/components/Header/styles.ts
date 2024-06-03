@@ -15,14 +15,14 @@ export const styles = StyleSheet.create({
 
   title: {
     color: "#fff",
-    fontSize: 20,
-    fontWeight: "700",
+    fontSize: 22,
+    fontWeight: "500",
   },
 
   iconContainer: {
     position: "absolute",
     left: 10,
-    bottom: 10,
+    bottom: 12,
     padding: 20,
   },
 

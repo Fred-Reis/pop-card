@@ -7,11 +7,18 @@ export const styles = StyleSheet.create({
     marginVertical: 20,
   },
 
+  chip: {
+    position: "absolute",
+    width: 40,
+    left: 100,
+    top: 20,
+  },
+
   number: {
     position: "absolute",
     bottom: 25,
-    left: 80,
-    color: "#3d3d3d",
+    left: 100,
+    color: "#ededed",
     letterSpacing: 2,
     fontSize: 20,
   },

@@ -21,10 +21,11 @@ interface ItemProps {
 }
 
 export const CardListItem = memo(({ item }: ItemProps) => {
-  const { navigate } = useNavigation();
+  const { navigate, setOptions } = useNavigation();
 
   function handleNavigate() {
     navigate("CardDetails" as never, { item });
+    setOptions({ title: item.nick_name });
   }
 
   return (

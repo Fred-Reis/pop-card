@@ -1,15 +1,8 @@
-import {
-  Image,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { Image } from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Home } from "@/views/Home";
-import { AddCard } from "@/views/AddCard";
-import { History } from "@/views/History";
+import { Home, AddCard, History } from "@/views";
 import { Header } from "./components/FullHeader";
 
 import { CustomTabIcon } from "./components/CustomTabIcon";

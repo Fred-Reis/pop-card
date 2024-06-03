@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useWindowDimensions } from "react-native";
 
 import { QueryClientProvider } from "@tanstack/react-query";
 import ToastManager from "toastify-react-native";
@@ -8,8 +9,7 @@ import { useFonts } from "expo-font";
 import queryClient from "./server/api/queryClient";
 
 import { AppNavigator } from "@/navigation";
-import { Splash } from "@/views/Splash";
-import { useWindowDimensions } from "react-native";
+import { Splash } from "@/views";
 
 export default function App() {
   const { width } = useWindowDimensions();

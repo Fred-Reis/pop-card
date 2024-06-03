@@ -1,6 +1,6 @@
 import { FlatList, Text } from "react-native";
 
-import { CardListItem } from "../CardListItem";
+import { CardListItem } from "@/components";
 import { CardProps } from "@/types/cardDTO";
 
 import { styles } from "./styles";
