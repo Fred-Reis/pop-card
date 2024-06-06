@@ -1,4 +1,4 @@
-import { FlatList, Text } from "react-native";
+import { FlatList, Text, View } from "react-native";
 
 import { TransactionItem } from "../TransactionItem";
 import { TransacionProps } from "@/types/transactionDTO";
@@ -12,22 +12,32 @@ interface Props {
 export const TransactionsList = ({ data }: Props) => {
   return (
     <>
-      <Text style={styles.title}>Transações</Text>
+      <Text style={styles.title}>Últimas Transações</Text>
+
+      <Label />
+
       <FlatList
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
         data={data}
         renderItem={({ item }) => <TransactionItem transaction={item} />}
         showsVerticalScrollIndicator={false}
-        // snapToAlignment="start"
         decelerationRate={"fast"}
-        // snapToInterval={160}
         bounces={false}
         style={styles.list}
-        contentContainerStyle={
-          {
-            // paddingRight: 20,
-          }
-        }
+        contentContainerStyle={{
+          paddingBottom: 50,
+        }}
       />
     </>
   );
 };
+
+const Label = () => (
+  <View style={styles.labelContainer}>
+    <Text style={styles.label}>Data</Text>
+    <Text style={styles.label}>{"\u2502"}</Text>
+    <Text style={styles.label}>Valor</Text>
+    <Text style={styles.label}>{"\u2502"}</Text>
+    <Text style={styles.label}>Parcelas</Text>
+  </View>
+);

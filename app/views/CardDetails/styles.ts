@@ -2,10 +2,15 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-
+    marginTop: 50,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  title: {
+    fontSize: 20,
+    fontWeight: "500",
+    color: "#3d3d3d",
   },
 
   message: {

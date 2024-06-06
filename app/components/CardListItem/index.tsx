@@ -25,7 +25,7 @@ export const CardListItem = memo(({ item }: ItemProps) => {
 
   function handleNavigate() {
     navigate("CardDetails" as never, { item });
-    setOptions({ title: item.nick_name });
+    // setOptions({ title: item.nick_name });
   }
 
   return (

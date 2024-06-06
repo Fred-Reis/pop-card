@@ -33,7 +33,8 @@ export const AppStack = () => {
               title: "Detalhes do Cartão",
               header: ({ route }) => (
                 <Header
-                  title={`Detalhe cartão ${route.params?.item?.nick_name}`}
+                  title="Detalhe cartão"
+                  color={route.params?.item?.color}
                 />
               ),
             }}
