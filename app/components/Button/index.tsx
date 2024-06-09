@@ -12,6 +12,7 @@ export const CusttomButton = ({
   message,
   action,
   type = "default",
+  ...rest
 }: ButtonProps) => {
   return (
     <TouchableOpacity onPress={action}>

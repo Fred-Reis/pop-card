@@ -30,7 +30,7 @@ interface LoginProps {
   password: string;
 }
 
-export const LoginForm = () => {
+export const SignUpForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   const { control, handleSubmit } = useForm({
     mode: "onSubmit",
@@ -86,6 +86,35 @@ export const LoginForm = () => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.label}>Nome</Text>
+      <FormInput
+        control={control}
+        name={"name"}
+        placeholder="Seu nome"
+        maxLength={14}
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+
+      <Text style={styles.label}>Sobrenome</Text>
+      <FormInput
+        control={control}
+        name={"surname"}
+        placeholder="Seu sobrenome"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+
+      <Text style={styles.label}>Email</Text>
+      <FormInput
+        control={control}
+        name={"email"}
+        placeholder="email@example.com"
+        autoCapitalize="none"
+        autoCorrect={false}
+      />
+
+      <Text style={styles.label}>Número do CPF</Text>
       <FormInput
         masked
         mask="999.999.999-99"
@@ -96,11 +125,11 @@ export const LoginForm = () => {
         autoCapitalize="none"
         autoCorrect={false}
         keyboardType="numeric"
-        width={200}
       />
-      <Text style={styles.label}>Número do CPF</Text>
 
+      <Text style={styles.label}>Senha</Text>
       <FormInput
+        width={200}
         control={control}
         name={"password"}
         placeholder="senha"
@@ -110,11 +139,11 @@ export const LoginForm = () => {
         handleToggle={togglePasswordVisibility}
         icon={visiblePassword ? hidden : visible}
         secureTextEntry={!visiblePassword}
-        width={200}
       />
-      <Text style={styles.label}>Senha</Text>
 
-      <CusttomButton message="Login" action={handleSubmit(onSubmit)} />
+      <View style={{ alignSelf: "center", marginVertical: 20 }}>
+        <CusttomButton message="Cadastrar" action={handleSubmit(onSubmit)} />
+      </View>
     </View>
   );
 };

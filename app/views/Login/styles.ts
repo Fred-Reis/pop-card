@@ -7,12 +7,26 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
-  message: {
+  title: {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 30,
     marginBottom: 25,
-    textAlign: "center",
+  },
+
+  forgotPassword: {
+    color: "#fff",
+    fontWeight: "500",
+    fontSize: 16,
+    marginVertical: 20,
+    textDecorationLine: "underline",
+  },
+
+  newAccount: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "500",
+    textDecorationLine: "underline",
   },
 
   logo: {

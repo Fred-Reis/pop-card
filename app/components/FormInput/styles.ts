@@ -4,8 +4,7 @@ export const styles = StyleSheet.create({
   inputContainer: {
     backgroundColor: "#fff",
     borderRadius: 10,
-    marginBottom: 3,
-    width: 200,
+    marginVertical: 5,
     padding: 3,
     paddingHorizontal: 10,
   },
@@ -28,7 +27,8 @@ export const styles = StyleSheet.create({
   },
 
   errorMessage: {
-    marginBottom: 10,
+    marginVertical: 3,
     color: "#ec3030",
+    textAlign: "center",
   },
 });

@@ -1,4 +1,5 @@
 import {
+  DimensionValue,
   Image,
   ImageSourcePropType,
   Text,
@@ -17,6 +18,7 @@ interface FormInputProps {
   name: string;
   icon?: ImageSourcePropType;
   control: Control<FieldValues>;
+  width?: DimensionValue;
   handleToggle?: () => void;
   [x: string]: any;
 }
@@ -27,6 +29,7 @@ export const FormInput = ({
   name,
   icon,
   control,
+  width,
   handleToggle,
   ...otherProps
 }: FormInputProps) => {
@@ -39,7 +42,7 @@ export const FormInput = ({
         fieldState: { error },
       }) => (
         <>
-          <View style={styles.inputContainer}>
+          <View style={[styles.inputContainer, { width: width || "100%" }]}>
             {masked ? (
               <MaskedTextInput
                 mask={mask}

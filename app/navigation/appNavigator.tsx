@@ -6,7 +6,7 @@ import { useUserStore } from "@/store";
 
 import { MyTabs } from "./tabs";
 import { Header } from "./components/Header";
-import { Login, CardDetails } from "@/views";
+import { Login, CardDetails, SignUp } from "@/views";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,11 +41,20 @@ export const AppStack = () => {
           />
         </Stack.Group>
       ) : (
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        />
+        <Stack.Group>
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{
+              header: ({ route }) => <Header title="Cadastro" />,
+            }}
+          />
+        </Stack.Group>
       )}
     </Stack.Navigator>
   );

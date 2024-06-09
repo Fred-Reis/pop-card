@@ -4,6 +4,7 @@ import {
   Text,
   KeyboardAvoidingView,
   Platform,
+  TouchableOpacity,
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
@@ -13,8 +14,11 @@ import { LoginForm } from "./LoginForm";
 import logo from "@/assets/logo.png";
 
 import { styles } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export const Login = () => {
+  const { navigate } = useNavigation();
+
   return (
     <LinearGradient
       colors={["rgba(48,249,201,0.5)", "rgba(239,144,55,0.5)"]}
@@ -25,9 +29,17 @@ export const Login = () => {
         style={styles.container}
       >
         <Image source={logo} style={styles.logo} resizeMode="contain" />
-        <Text style={styles.message}>Login</Text>
+        <Text style={styles.title}>Login</Text>
 
         <LoginForm />
+
+        <TouchableOpacity onPress={() => alert("Esqueci minha senha")}>
+          <Text style={styles.forgotPassword}>Esqueci minha senha</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => navigate("SignUp" as never)}>
+          <Text style={styles.newAccount}>Ainda não tenho uma conta</Text>
+        </TouchableOpacity>
       </KeyboardAvoidingView>
     </LinearGradient>
   );
