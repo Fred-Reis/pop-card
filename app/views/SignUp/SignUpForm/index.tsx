@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Text, View } from "react-native";
 
 import { z } from "zod";
@@ -6,74 +5,45 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useToasts } from "@/utils/services/toast";
-import { saveEncryptedValue } from "@/utils/storage";
-import { useUsersListStore, useUserStore } from "@/store";
+import { SignUpProps } from "@/types/signupDTO";
 
-import { FormInput, CusttomButton } from "@/components";
+import { FormInput, CusttomButton, CreatePasswordForm } from "@/components";
 
 import { styles } from "./styles";
 
-import visible from "@/assets/icons/visible.png";
-import hidden from "@/assets/icons/hidden.png";
-
 const formSchema = z.object({
+  name: z
+    .string({ required_error: "O Nome é obrigatório" })
+    .min(3, "O Nome deve ter pelo menos 3 letras"),
+  surname: z
+    .string({ required_error: "O Sobrenome é obrigatório" })
+    .min(3, "O Sobrenome deve ter pelo menos 3 letras"),
+  email: z
+    .string({ required_error: "O e-mail é obrigatório" })
+    .email("O formato do email é inválido"),
   cpf: z
     .string({ required_error: "O CPF é obrigatório" })
     .length(11, "O número do CPF precisa ter 11 dígitos"),
-  password: z
-    .string({ required_error: "A Senha é obrigatória" })
-    .length(6, "A senha precisa ter 6 dígitos"),
 });
 
-interface LoginProps {
-  cpf: string;
-  password: string;
+interface SignupFormProps {
+  setUser: (x: any) => void;
+  user: SignUpProps;
 }
 
-export const SignUpForm = () => {
-  const [visiblePassword, setVisiblePassword] = useState(false);
+export const SignUpForm = ({ setUser, user }: SignupFormProps) => {
   const { control, handleSubmit } = useForm({
     mode: "onSubmit",
     resolver: zodResolver(formSchema),
   });
 
-  /**
-   *  !TODO REFACTOR
-   *  PROVISIONAL SOLUTION
-   */
-
-  const { setUser } = useUserStore();
-  const { allUsersList } = useUsersListStore();
-
-  function handleFakeLogin({ cpf, password }: LoginProps) {
-    const user = allUsersList.find((user) => user.cpf === cpf);
-
-    if (!user || user?.password !== password) {
-      throw Error("CPF ou senha inválidos");
-    }
-
-    return user;
+  function addPassword(password: string) {
+    setUser((user) => ({ ...user, password }));
   }
 
-  function togglePasswordVisibility() {
-    setVisiblePassword(!visiblePassword);
-  }
-
-  function onSubmit(data: any) {
+  function onSubmit(data: SignUpProps) {
     try {
-      const user = { ...handleFakeLogin(data) };
-
-      useToasts({
-        type: "success",
-        title: "Login",
-        message: "Login efetuado com sucesso",
-      });
-
-      saveEncryptedValue("user_token", user.token);
-
-      delete user["token"];
-      delete user["password"];
-
+      const user = { ...data };
       setUser(user);
     } catch (error) {
       useToasts({
@@ -85,65 +55,57 @@ export const SignUpForm = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>Nome</Text>
-      <FormInput
-        control={control}
-        name={"name"}
-        placeholder="Seu nome"
-        maxLength={14}
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
+    <>
+      {Object.keys(user).length ? (
+        <CreatePasswordForm callback={addPassword} />
+      ) : (
+        <View style={styles.container}>
+          <Text style={styles.label}>Nome</Text>
+          <FormInput
+            control={control}
+            name={"name"}
+            placeholder="Seu nome"
+            maxLength={14}
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
 
-      <Text style={styles.label}>Sobrenome</Text>
-      <FormInput
-        control={control}
-        name={"surname"}
-        placeholder="Seu sobrenome"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
+          <Text style={styles.label}>Sobrenome</Text>
+          <FormInput
+            control={control}
+            name={"surname"}
+            placeholder="Seu sobrenome"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
 
-      <Text style={styles.label}>Email</Text>
-      <FormInput
-        control={control}
-        name={"email"}
-        placeholder="email@example.com"
-        autoCapitalize="none"
-        autoCorrect={false}
-      />
+          <Text style={styles.label}>Email</Text>
+          <FormInput
+            control={control}
+            name={"email"}
+            placeholder="email@example.com"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
 
-      <Text style={styles.label}>Número do CPF</Text>
-      <FormInput
-        masked
-        mask="999.999.999-99"
-        control={control}
-        name={"cpf"}
-        placeholder="999.999.999-99"
-        maxLength={14}
-        autoCapitalize="none"
-        autoCorrect={false}
-        keyboardType="numeric"
-      />
+          <Text style={styles.label}>Número do CPF</Text>
+          <FormInput
+            masked
+            mask="999.999.999-99"
+            control={control}
+            name={"cpf"}
+            placeholder="999.999.999-99"
+            maxLength={14}
+            autoCapitalize="none"
+            autoCorrect={false}
+            keyboardType="numeric"
+          />
 
-      <Text style={styles.label}>Senha</Text>
-      <FormInput
-        width={200}
-        control={control}
-        name={"password"}
-        placeholder="senha"
-        maxLength={6}
-        autoCapitalize="none"
-        autoCorrect={false}
-        handleToggle={togglePasswordVisibility}
-        icon={visiblePassword ? hidden : visible}
-        secureTextEntry={!visiblePassword}
-      />
-
-      <View style={{ alignSelf: "center", marginVertical: 20 }}>
-        <CusttomButton message="Cadastrar" action={handleSubmit(onSubmit)} />
-      </View>
-    </View>
+          <View style={styles.buttonContainer}>
+            <CusttomButton message="Confirma" action={handleSubmit(onSubmit)} />
+          </View>
+        </View>
+      )}
+    </>
   );
 };

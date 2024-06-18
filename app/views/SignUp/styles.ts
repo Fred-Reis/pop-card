@@ -23,11 +23,24 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
   },
 
-  // formContainer: {
-  //   borderColor: "#3e3e3e",
-  //   borderWidth: 1,
-  //   borderRadius: 5,
+  buttonContainer: {
+    alignSelf: "center",
+    marginVertical: 20,
+  },
 
-  //   padding: 10,
-  // },
+  dataWrapper: {
+    backgroundColor: "#fff",
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 25,
+
+    flexDirection: "row",
+  },
+
+  dataMessage: {
+    textTransform: "capitalize",
+    color: "#3e3e3e",
+    fontSize: 20,
+    textAlign: "left",
+  },
 });

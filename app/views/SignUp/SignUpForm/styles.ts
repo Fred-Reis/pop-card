@@ -13,4 +13,9 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     color: "#3e3e3e",
   },
+
+  buttonContainer: {
+    alignSelf: "center",
+    marginVertical: 20,
+  },
 });

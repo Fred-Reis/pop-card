@@ -1,9 +1,14 @@
+import * as Crypto from "expo-crypto";
+
 import { useUsersListStore } from "@/store/backEndDataStore";
+import { SignUpProps } from "@/types/signupDTO";
+import { UserProps } from "@/types/userDTO";
 
 interface LoginProps {
   account: string;
   password: string;
 }
+
 export function handleFakeLogin({ account, password }: LoginProps) {
   const { allUsersList } = useUsersListStore();
 
@@ -28,4 +33,29 @@ export function handleFakeMapUserCards(
   });
 
   return cards;
+}
+
+export function handleFakeCreateUser({
+  cpf,
+  name,
+  email,
+  surname,
+  password,
+}: SignUpProps) {
+  const newUser: UserProps = {
+    id: String(Math.random()).substring(2, 18),
+    name: name.trim(),
+    token: Crypto.randomUUID(),
+    balance: "0",
+    currency: "BRL",
+    cards: [],
+    main_card_number: String(Math.random()).substring(2, 18),
+    surname: surname.trim(),
+    cpf,
+    email,
+    password,
+    account_number: String(Math.random()).substring(2, 8),
+  };
+
+  return newUser;
 }
