@@ -6,13 +6,15 @@ import { MaskedText } from "react-native-mask-text";
 
 import { handleFakeCreateUser } from "@/utils/fakeApiFunctions";
 import { createUser } from "@/server/queries/createUser";
+import { saveEncryptedValue } from "@/utils/storage";
+import { useToasts } from "@/utils/services/toast";
 import { SignUpProps } from "@/types/signupDTO";
+import { useUserStore } from "@/store";
 
 import { CusttomButton } from "@/components";
 import { SignUpForm } from "./SignUpForm";
 
 import { styles } from "./styles";
-import { useUserStore } from "@/store";
 
 export const SignUp = () => {
   const [user, setNewUser] = useState({} as SignUpProps);
@@ -31,7 +33,17 @@ export const SignUp = () => {
   function handleSignUp() {
     const newUser = handleFakeCreateUser(user);
     mutation.mutate(newUser);
-    // console.log(data);
+
+    useToasts({
+      type: "success",
+      title: "Cadastro",
+      message: "Cadastro efetuado com sucesso",
+    });
+
+    saveEncryptedValue("user_token", newUser.token);
+
+    delete newUser["token"];
+    delete newUser["password"];
 
     setUser(newUser);
   }

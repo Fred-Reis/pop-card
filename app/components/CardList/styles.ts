@@ -14,4 +14,25 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     maxHeight: 200,
   },
+
+  empty: {
+    margin: "auto",
+    alignItems: "center",
+    justifyContent: "center",
+    minWidth: "100%",
+    color: "#3d3d3d",
+  },
+
+  emptyMessage: {
+    color: "#3d3d3d",
+    fontSize: 20,
+    fontWeight: "500",
+  },
+
+  addCardButton: {
+    alignItems: "center",
+    justifyContent: "center",
+    height: "45%",
+    marginLeft: 10,
+  },
 });

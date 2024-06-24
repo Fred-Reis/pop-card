@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useToasts } from "@/utils/services/toast";
+import { useFetchAllUsers } from "@/server/queries";
 import { saveEncryptedValue } from "@/utils/storage";
 import { useUsersListStore, useUserStore } from "@/store";
 
@@ -43,10 +44,11 @@ export const LoginForm = () => {
    */
 
   const { setUser } = useUserStore();
-  const { allUsersList } = useUsersListStore();
+  // const { allUsersList } = useUsersListStore();
+  const { data } = useFetchAllUsers();
 
   function handleFakeLogin({ cpf, password }: LoginProps) {
-    const user = allUsersList.find((user) => user.cpf === cpf);
+    const user = data.find((user) => user.cpf === cpf);
 
     if (!user || user?.password !== password) {
       throw Error("CPF ou senha inválidos");
