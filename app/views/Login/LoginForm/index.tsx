@@ -16,6 +16,7 @@ import { styles } from "./styles";
 
 import visible from "@/assets/icons/visible.png";
 import hidden from "@/assets/icons/hidden.png";
+import { handleFakeLogin } from "@/utils/fakeApiFunctions";
 
 const formSchema = z.object({
   cpf: z
@@ -44,11 +45,10 @@ export const LoginForm = () => {
    */
 
   const { setUser } = useUserStore();
-  // const { allUsersList } = useUsersListStore();
-  const { data } = useFetchAllUsers();
+  const { data: users } = useFetchAllUsers();
 
   function handleFakeLogin({ cpf, password }: LoginProps) {
-    const user = data.find((user) => user.cpf === cpf);
+    const user = users.find((user) => user.cpf === cpf);
 
     if (!user || user?.password !== password) {
       throw Error("CPF ou senha inválidos");

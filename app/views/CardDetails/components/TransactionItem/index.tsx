@@ -11,8 +11,6 @@ interface ItemProps {
 }
 
 export const TransactionItem = memo(({ transaction }: ItemProps) => {
-  console.log(transaction);
-
   return (
     <View style={styles.transactionContainer}>
       <Text style={styles.date}>{formatDate(transaction.date)}</Text>

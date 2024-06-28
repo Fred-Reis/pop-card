@@ -2,31 +2,43 @@
   "cards": [
     {
       "id": "1",
+      "type": "1",
+      "pre": "1234",
       "name": "Nubank",
       "color": "#993399"
     },
     {
       "id": "2",
+      "type": "2",
+      "pre": "2345",
       "name": "C6",
       "color": "#1e1e1e"
     },
     {
       "id": "3",
+      "type": "3",
+      "pre": "3456",
       "name": "Inter",
       "color": "#FF7B00"
     },
     {
       "id": "4",
+      "type": "4",
+      "pre": "4567",
       "name": "Banco Brasil",
       "color": "#FCFC34"
     },
     {
       "id": "5",
+      "type": "5",
+      "pre": "5678",
       "name": "Santander",
       "color": "#DC121A"
     },
     {
       "id": "6",
+      "type": "6",
+      "pre": "6789",
       "name": "Neom",
       "color": "#0ACDEB"
     }
@@ -48,17 +60,26 @@
         {
           "id": "1",
           "nick_name": "C6 PF",
+          "name": "frederico reis",
+          "cvv": "123",
+          "validate": "12/24",
           "number": "1234123412341234",
           "type": "2"
         },
         {
           "id": "2",
+          "name": "frederico reis",
+          "cvv": "123",
+          "validate": "12/24",
           "nick_name": "Inter PF",
           "number": "1234123412341234",
           "type": "3"
         },
         {
           "id": "3",
+          "name": "frederico reis",
+          "cvv": "123",
+          "validate": "12/24",
           "nick_name": "Neom PF",
           "number": "1234123412341234",
           "type": "6"
@@ -67,13 +88,34 @@
     },
     {
       "id": "1332016210363045",
-      "name": "john",
+      "name": "asdsad",
       "token": "7695cb3a-1c2a-4a5f-a8c6-fb564fd8d443",
-      "balance": "0",
+      "balance": "10000",
       "currency": "BRL",
-      "cards": [],
+      "cards": [
+        {
+          "id": "3503682606920976",
+          "nick_name": "novo cartão",
+          "name": "john doo",
+          "cvv": "343",
+          "validate": "32/43",
+          "number": "1234556756767675",
+          "type": "1",
+          "color": "#993399"
+        },
+        {
+          "id": "9626999531649588",
+          "nick_name": "cart as",
+          "name": "asdasdas",
+          "cvv": "345",
+          "validate": "34/54",
+          "number": "3456646465435634",
+          "type": "3",
+          "color": "#FF7B00"
+        }
+      ],
       "main_card_number": "7774285945716816",
-      "surname": "doo",
+      "surname": "Doo",
       "cpf": "11111111111",
       "email": "jd@example.co",
       "password": "111111",

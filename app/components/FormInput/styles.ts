@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   inputContainer: {
-    backgroundColor: "#fff",
     borderRadius: 10,
     marginVertical: 5,
     padding: 3,

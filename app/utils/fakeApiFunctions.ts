@@ -1,35 +1,59 @@
 import * as Crypto from "expo-crypto";
 
-import { useUsersListStore } from "@/store/backEndDataStore";
+import { useCardListStore, useUsersListStore } from "@/store/backEndDataStore";
+import { useFetchAllUsers } from "@/server/queries";
 import { SignUpProps } from "@/types/signupDTO";
 import { UserProps } from "@/types/userDTO";
+import { CardProps } from "@/types/cardDTO";
 
 interface LoginProps {
-  account: string;
+  cpf: string;
   password: string;
 }
 
-export function handleFakeLogin({ account, password }: LoginProps) {
-  const { allUsersList } = useUsersListStore();
+export interface CreateCardProps {
+  data: {
+    name: string;
+    cardNumber: string;
+    nickName: string;
+    cvv: string;
+    validate: string;
+  };
+  // userId: string;
+}
 
-  const user = allUsersList.find((user) => user.account_number === account);
+export const handleFakeLogin = ({ cpf, password }: LoginProps) => {
+  const { data } = useFetchAllUsers();
+  // const { allUsersList } = useUsersListStore();
 
-  if (user.password !== password) {
-    console.log("ERRR");
+  const user = data.find((user) => user.cpf === cpf);
 
-    throw Error("Email ou senha inválidos");
+  if (!user || user?.password !== password) {
+    throw Error("CPF ou senha inválidos");
   }
 
   return user;
-}
+
+  // const user = allUsersList.find((user) => user.account_number === account);
+
+  // if (user.password !== password) {
+
+  //   throw Error("Email ou senha inválidos");
+  // }
+
+  // return user;
+};
 
 export function handleFakeMapUserCards(
   userCardsList: any[],
   allCardsList: any[]
 ) {
   const cards = userCardsList.map((userCard) => {
-    const card = allCardsList.find((card) => card?.id === userCard?.type);
-    return { ...userCard, color: card.color, name: card.name };
+    const card = allCardsList.find((card) => card?.type === userCard?.type);
+
+    return {
+      ...userCard,
+    };
   });
 
   return cards;
@@ -59,3 +83,24 @@ export function handleFakeCreateUser({
 
   return newUser;
 }
+
+export const handleFakeAddNewCard = ({ data }: CreateCardProps) => {
+  const { allCardsList } = useCardListStore.getState();
+
+  const refCard = allCardsList.find(
+    (card) => card.pre === data.cardNumber.substring(0, 4)
+  );
+
+  const newCard: CardProps = {
+    id: String(Math.random()).substring(2, 18),
+    nick_name: data.nickName,
+    name: data.name,
+    cvv: data.cvv,
+    validate: `${data.validate.substring(0, 2)}/${data.validate.substring(2)}`,
+    number: data.cardNumber,
+    type: refCard?.type || "",
+    color: refCard?.color || "",
+  };
+
+  return newCard;
+};

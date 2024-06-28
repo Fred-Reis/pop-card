@@ -5,3 +5,4 @@ export { CardListItem } from "./CardListItem";
 export { FormInput } from "./FormInput";
 export { MainCard } from "./MainCard";
 export { CreatePasswordForm } from "./CreatePasswordForm";
+export { ModalComponent } from "./Modal";

@@ -607,14 +607,12 @@ const transactions = [
 export const CardDetails = () => {
   const { params }: { params: { item: CardProps } } = useRoute();
 
-  console.log(params);
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{params.item.nick_name}</Text>
       <MainCard
         number={params.item.number.slice(-4)}
-        color={params.item.color}
+        color={params.item.color || "#3d3d3d"}
       />
       <TransactionsList data={transactions} />
     </View>

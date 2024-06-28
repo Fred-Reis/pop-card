@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-import { CardProps } from "@/types/cardDTO";
+import { CardListProps, CardProps } from "@/types/cardDTO";
 import { UserProps } from "@/types/userDTO";
 
 type CardListStore = {
   isLoading: boolean;
   setIsLoading: (state: boolean) => void;
-  allCardsList: CardProps[];
-  setAllCardsList: (newList: CardProps[]) => void;
+  allCardsList: CardListProps[];
+  setAllCardsList: (newList: CardListProps[]) => void;
 };
 
 type UsersListStore = {
@@ -21,7 +21,7 @@ export const useCardListStore = create<CardListStore>((set) => ({
   isLoading: true,
   setIsLoading: (state: boolean) => set({ isLoading: state }),
   allCardsList: [],
-  setAllCardsList: (newList: CardProps[]) => set({ allCardsList: newList }),
+  setAllCardsList: (newList: CardListProps[]) => set({ allCardsList: newList }),
 }));
 
 export const useUsersListStore = create<UsersListStore>((set) => ({

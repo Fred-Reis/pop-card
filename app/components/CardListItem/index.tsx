@@ -31,7 +31,7 @@ export const CardListItem = memo(({ item }: ItemProps) => {
   return (
     <TouchableOpacity onPress={handleNavigate} style={styles.cardContainer}>
       <ImageBackground
-        imageStyle={{ tintColor: item.color }}
+        imageStyle={{ tintColor: item?.color || "#3d3d3d" }}
         source={card}
         style={styles.image}
         resizeMode="contain"
