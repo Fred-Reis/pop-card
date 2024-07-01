@@ -9,8 +9,8 @@ interface ModalProps {
 const Header = ({ closeModal }) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={styles.headerTitle}>Adicione um novo Cartão</Text>
-      <TouchableOpacity onPress={closeModal}>
+      <Text style={styles.headerTitle}>Remover Cartão</Text>
+      <TouchableOpacity onPress={closeModal} style={styles.closeButtonWrapper}>
         <Text style={styles.closeButton}>+</Text>
       </TouchableOpacity>
     </View>

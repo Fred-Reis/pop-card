@@ -2,7 +2,6 @@ import { useMutation } from "@tanstack/react-query";
 
 import { API } from "./url";
 
-import { UserProps } from "@/types/userDTO";
 import { useUserStore } from "@/store";
 
 export async function addCard(obj: any) {
@@ -11,8 +10,8 @@ export async function addCard(obj: any) {
   return data;
 }
 
-export const useAddCard = () => {
-  const { setUser, user } = useUserStore.getState();
+export const useEditCards = () => {
+  const { setUser } = useUserStore.getState();
 
   return useMutation({
     mutationFn: addCard,

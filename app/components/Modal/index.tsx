@@ -1,6 +1,7 @@
 import { memo } from "react";
-
 import { Modal, View } from "react-native";
+
+import { styles } from "./styles";
 
 interface ModalProps {
   children: React.ReactNode;
@@ -10,28 +11,14 @@ interface ModalProps {
 
 const Component = ({ children, visible, closeModal }: ModalProps) => {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <View style={styles.wrapper}>
       <Modal
         animationType="slide"
         transparent={true}
         visible={visible}
         onRequestClose={closeModal}
       >
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {children}
-        </View>
+        <View style={styles.wrapper}>{children}</View>
       </Modal>
     </View>
   );

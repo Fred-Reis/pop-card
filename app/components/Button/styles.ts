@@ -16,7 +16,10 @@ export const styles = StyleSheet.create({
   },
 
   message: {
-    fontSize: 22,
     color: "#3e3e3e",
+  },
+
+  noBorder: {
+    borderWidth: 0,
   },
 });

@@ -58,31 +58,24 @@
       "currency": "BRL",
       "cards": [
         {
-          "id": "1",
-          "nick_name": "C6 PF",
-          "name": "frederico reis",
-          "cvv": "123",
-          "validate": "12/24",
-          "number": "1234123412341234",
-          "type": "2"
+          "id": "3848822600695376",
+          "nick_name": "rrrqwrqwr",
+          "name": "qwrqwr",
+          "cvv": "657",
+          "validate": "67/56",
+          "number": "5657567567567567",
+          "type": "",
+          "color": null
         },
         {
-          "id": "2",
-          "name": "frederico reis",
-          "cvv": "123",
-          "validate": "12/24",
-          "nick_name": "Inter PF",
-          "number": "1234123412341234",
-          "type": "3"
-        },
-        {
-          "id": "3",
-          "name": "frederico reis",
-          "cvv": "123",
-          "validate": "12/24",
-          "nick_name": "Neom PF",
-          "number": "1234123412341234",
-          "type": "6"
+          "id": "6667416567520872",
+          "nick_name": "qsadassd",
+          "name": "asdasd",
+          "cvv": "234",
+          "validate": "23/42",
+          "number": "4434342342342342",
+          "type": null,
+          "color": null
         }
       ]
     },
@@ -92,28 +85,7 @@
       "token": "7695cb3a-1c2a-4a5f-a8c6-fb564fd8d443",
       "balance": "10000",
       "currency": "BRL",
-      "cards": [
-        {
-          "id": "3503682606920976",
-          "nick_name": "novo cartão",
-          "name": "john doo",
-          "cvv": "343",
-          "validate": "32/43",
-          "number": "1234556756767675",
-          "type": "1",
-          "color": "#993399"
-        },
-        {
-          "id": "9626999531649588",
-          "nick_name": "cart as",
-          "name": "asdasdas",
-          "cvv": "345",
-          "validate": "34/54",
-          "number": "3456646465435634",
-          "type": "3",
-          "color": "#FF7B00"
-        }
-      ],
+      "cards": [],
       "main_card_number": "7774285945716816",
       "surname": "Doo",
       "cpf": "11111111111",

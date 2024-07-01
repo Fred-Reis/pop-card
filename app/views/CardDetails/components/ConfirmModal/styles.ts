@@ -35,7 +35,8 @@ export const styles = StyleSheet.create({
     backgroundColor: "#fff",
     borderRadius: 10,
     paddingVertical: 20,
-    marginHorizontal: 20,
+    maxWidth: "80%",
+    alignItems: "center",
   },
 
   title: {
@@ -44,5 +45,14 @@ export const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#3d3d3d",
     margin: 15,
+  },
+
+  textContainer: {
+    alignItems: "center",
+    marginHorizontal: 20,
+  },
+
+  button: {
+    backgroundColor: "transparent",
   },
 });

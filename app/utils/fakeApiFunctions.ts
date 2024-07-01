@@ -98,8 +98,8 @@ export const handleFakeAddNewCard = ({ data }: CreateCardProps) => {
     cvv: data.cvv,
     validate: `${data.validate.substring(0, 2)}/${data.validate.substring(2)}`,
     number: data.cardNumber,
-    type: refCard?.type || "",
-    color: refCard?.color || "",
+    type: refCard?.type || null,
+    color: refCard?.color || null,
   };
 
   return newCard;

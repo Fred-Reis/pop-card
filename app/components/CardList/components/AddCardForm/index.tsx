@@ -1,16 +1,16 @@
 import { Text, View } from "react-native";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useUserStore } from "@/store";
-import { useAddCard } from "@/server/queries/addCard";
+import { useToasts } from "@/utils/services/toast";
 import { FormInput, CusttomButton } from "@/components";
+import { useEditCards } from "@/server/queries/editCards";
 import { handleFakeAddNewCard } from "@/utils/fakeApiFunctions";
 
 import { styles } from "./styles";
-import { useToasts } from "@/utils/services/toast";
 
 const formSchema = z
   .object({
@@ -72,7 +72,7 @@ export const AddCardForm = ({ callback }: AddCardFormProps) => {
 
   const { user } = useUserStore();
 
-  const addCard = useAddCard();
+  const addCard = useEditCards();
 
   function onSubmit(data: AddCardProps) {
     try {
