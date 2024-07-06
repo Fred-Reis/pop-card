@@ -1,6 +1,6 @@
 import * as Crypto from "expo-crypto";
 
-import { useCardListStore, useUsersListStore } from "@/store/backEndDataStore";
+import { useCardListStore } from "@/store/backEndDataStore";
 import { useFetchAllUsers } from "@/server/queries";
 import { SignUpProps } from "@/types/signupDTO";
 import { UserProps } from "@/types/userDTO";
@@ -44,20 +44,20 @@ export const handleFakeLogin = ({ cpf, password }: LoginProps) => {
   // return user;
 };
 
-export function handleFakeMapUserCards(
-  userCardsList: any[],
-  allCardsList: any[]
-) {
-  const cards = userCardsList.map((userCard) => {
-    const card = allCardsList.find((card) => card?.type === userCard?.type);
+// export function handleFakeMapUserCards(
+//   userCardsList: any[],
+//   allCardsList: any[]
+// ) {
+//   const cards = userCardsList.map((userCard) => {
+//     const card = allCardsList.find((card) => card?.type === userCard?.type);
 
-    return {
-      ...userCard,
-    };
-  });
+//     return {
+//       ...userCard,
+//     };
+//   });
 
-  return cards;
-}
+//   return cards;
+// }
 
 export function handleFakeCreateUser({
   cpf,

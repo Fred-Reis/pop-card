@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Text, View } from "react-native";
 
 import { z } from "zod";
@@ -8,7 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useToasts } from "@/utils/services/toast";
 import { useFetchAllUsers } from "@/server/queries";
 import { saveEncryptedValue } from "@/utils/storage";
-import { useUsersListStore, useUserStore } from "@/store";
+import { useUserStore } from "@/store";
 
 import { FormInput, CusttomButton } from "@/components";
 
@@ -16,7 +16,6 @@ import { styles } from "./styles";
 
 import visible from "@/assets/icons/visible.png";
 import hidden from "@/assets/icons/hidden.png";
-import { handleFakeLogin } from "@/utils/fakeApiFunctions";
 
 const formSchema = z.object({
   cpf: z
@@ -38,6 +37,9 @@ export const LoginForm = () => {
     mode: "onSubmit",
     resolver: zodResolver(formSchema),
   });
+
+  const cpfRef = useRef(null);
+  const passwordRef = useRef(null);
 
   /**
    *  !TODO REFACTOR
@@ -86,9 +88,14 @@ export const LoginForm = () => {
     }
   }
 
+  useEffect(() => {
+    cpfRef.current?.focus();
+  }, []);
+
   return (
     <View style={styles.container}>
       <FormInput
+        ref={cpfRef}
         masked
         mask="999.999.999-99"
         control={control}
@@ -99,10 +106,12 @@ export const LoginForm = () => {
         autoCorrect={false}
         keyboardType="numeric"
         width={200}
+        onSubmitEditing={() => passwordRef.current?.focus()}
       />
       <Text style={styles.label}>Número do CPF</Text>
 
       <FormInput
+        ref={passwordRef}
         control={control}
         name={"password"}
         placeholder="senha"
@@ -113,6 +122,7 @@ export const LoginForm = () => {
         icon={visiblePassword ? hidden : visible}
         secureTextEntry={!visiblePassword}
         width={200}
+        onSubmitEditing={handleSubmit(onSubmit)}
       />
       <Text style={styles.label}>Senha</Text>
 

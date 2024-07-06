@@ -2,10 +2,12 @@ import { Button, Text, TouchableOpacity, View } from "react-native";
 
 import { styles } from "./styles";
 import { CusttomButton } from "@/components";
+import { CardProps } from "@/types/cardDTO";
 
 interface ModalProps {
   closeModal: () => void;
   submitAction: () => void;
+  card: CardProps;
 }
 
 const Header = ({ closeModal }) => {
@@ -18,14 +20,14 @@ const Header = ({ closeModal }) => {
     </View>
   );
 };
-const ConfirmModal = ({ submitAction, closeModal }: ModalProps) => {
+const ConfirmModal = ({ card, submitAction, closeModal }: ModalProps) => {
   return (
     <View style={styles.contentContainer}>
       <Header closeModal={closeModal} />
 
       <View style={styles.textContainer}>
         <Text style={styles.title}>
-          Você tem certeza que deseja remover este cartão?
+          Você tem certeza que deseja remover o cartão: {card.nick_name}?
         </Text>
         <Text style={styles.title}>
           Caso você opte por remover o cartão de forma permanente, você perderá

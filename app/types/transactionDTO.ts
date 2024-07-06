@@ -1,4 +1,4 @@
-export interface TransacionProps {
+export interface TransactionProps {
   id: string;
   user_id: string;
   card_id: string;

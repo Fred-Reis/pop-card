@@ -9,6 +9,7 @@ import {
 
 import { useNavigation } from "@react-navigation/native";
 
+import { useTransactionsStore } from "@/store";
 import { CardProps } from "@/types/cardDTO";
 
 import { styles } from "./styles";
@@ -22,9 +23,22 @@ interface ItemProps {
 
 export const CardListItem = memo(({ item }: ItemProps) => {
   const { navigate, setOptions } = useNavigation();
+  const { trasactions } = useTransactionsStore();
 
   function handleNavigate() {
-    navigate("CardDetails" as never, { item });
+    // !TODO
+    //@ts-ignore
+    navigate("CardDetails" as never, {
+      item,
+      transactions: getTransactionsByCardId(),
+    });
+  }
+
+  function getTransactionsByCardId() {
+    const transactionsByCardId = trasactions.filter(
+      (transaction) => transaction.card_id === item.id
+    );
+    return transactionsByCardId;
   }
 
   return (

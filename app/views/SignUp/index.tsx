@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { MaskedText } from "react-native-mask-text";
 
 import { handleFakeCreateUser } from "@/utils/fakeApiFunctions";
-import { createUser } from "@/server/queries/createUser";
+import { createUser } from "@/server/queries";
 import { saveEncryptedValue } from "@/utils/storage";
 import { useToasts } from "@/utils/services/toast";
 import { SignUpProps } from "@/types/signupDTO";

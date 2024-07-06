@@ -2,7 +2,7 @@ import { Image } from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { Home, AddCard, History } from "@/views";
+import { Home, AddFunds, History } from "@/views";
 import { Header } from "./components/FullHeader";
 
 import { CustomTabIcon } from "./components/CustomTabIcon";
@@ -26,21 +26,21 @@ export const MyTabs = () => {
       }}
     >
       <Tab.Screen
-        name="Orçamento"
-        component={AddCard}
+        name="Home"
+        component={Home}
         options={{
           tabBarIcon: ({ focused }) => (
             <CustomTabIcon
-              text="ORÇAMENTO"
+              text="HOME"
               focused={focused}
-              icon={require("../assets/icons/tab/investment-w.png")}
+              icon={require("../assets/icons/tab/home.png")}
             />
           ),
         }}
       />
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Adicionar Fundos"
+        component={AddFunds}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

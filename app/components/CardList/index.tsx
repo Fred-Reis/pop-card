@@ -27,7 +27,7 @@ const EmptyCardList = ({ onPress }) => (
   </View>
 );
 
-export const CardList = ({ data }: Props) => {
+export const CardList = ({ data, ...rest }: Props) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -52,6 +52,7 @@ export const CardList = ({ data }: Props) => {
         ListEmptyComponent={() => (
           <EmptyCardList onPress={() => setShowModal(true)} />
         )}
+        {...rest}
       />
       <Modal visible={showModal} closeModal={() => setShowModal(false)}>
         <AddCardModal closeModal={() => setShowModal(false)} />

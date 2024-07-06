@@ -6,9 +6,18 @@ import { LinearGradient } from "expo-linear-gradient";
 import BootSplash from "react-native-bootsplash";
 import LottieView from "lottie-react-native";
 
+import {
+  useCardListStore,
+  useUsersListStore,
+  useTransactionsStore,
+} from "@/store";
+import {
+  useFetchAllCards,
+  useFetchAllUsers,
+  useFetchAllTransactions,
+} from "@/server/queries";
+
 import { styles } from "./styles";
-import { useFetchAllCards, useFetchAllUsers } from "@/server/queries";
-import { useCardListStore, useUsersListStore } from "@/store/backEndDataStore";
 
 interface Props {
   onComplete: (x: boolean) => void;
@@ -31,9 +40,11 @@ export const Splash = ({ onComplete }: Props) => {
 
   const { data: cards, isLoading: cardsLoading } = useFetchAllCards();
   const { data: users, isLoading: userLoading } = useFetchAllUsers();
+  const { data: transactions } = useFetchAllTransactions();
 
-  const { setAllCardsList, setIsLoading } = useCardListStore();
   const { setAllUsersList, setIsLoading: setUserLoading } = useUsersListStore();
+  const { setAllCardsList, setIsLoading } = useCardListStore();
+  const { setTransactions } = useTransactionsStore();
 
   useEffect(() => {
     if (!cardsLoading && !userLoading) {
@@ -41,6 +52,7 @@ export const Splash = ({ onComplete }: Props) => {
       setAllCardsList(cards);
       setAllUsersList(users);
       setUserLoading(userLoading);
+      setTransactions(transactions);
     }
   }, [cardsLoading, userLoading]);
 

@@ -8,13 +8,13 @@ import {
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 
 import { LoginForm } from "./LoginForm";
 
-import logo from "@/assets/logo.png";
-
 import { styles } from "./styles";
-import { useNavigation } from "@react-navigation/native";
+
+import logo from "@/assets/logo.png";
 
 export const Login = () => {
   const { navigate } = useNavigation();

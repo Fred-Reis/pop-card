@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./styles";
-import { AddCardForm } from "../AddCardForm";
+import { AddFundsForm } from "../AddFundsForm";
+// import { AddCardForm } from "../AddCardForm";
 
 interface ModalProps {
   closeModal: () => void;
@@ -16,14 +17,14 @@ const Header = ({ closeModal }) => {
     </View>
   );
 };
-const AddCardModal = ({ closeModal }: ModalProps) => {
+const AddFundsModal = ({ closeModal }: ModalProps) => {
   return (
     <View style={styles.contentContainer}>
       <Header closeModal={closeModal} />
       <Text style={styles.title}>Insira os dados do seu novo cartão</Text>
-      <AddCardForm callback={closeModal} />
+      <AddFundsForm />
     </View>
   );
 };
 
-export default AddCardModal;
+export default AddFundsModal;

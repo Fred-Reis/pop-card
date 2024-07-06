@@ -5,18 +5,16 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useUserStore } from "@/store";
+import { useEditCards } from "@/server/queries";
 import { useToasts } from "@/utils/services/toast";
 import { FormInput, CusttomButton } from "@/components";
-import { useEditCards } from "@/server/queries/editCards";
 import { handleFakeAddNewCard } from "@/utils/fakeApiFunctions";
 
 import { styles } from "./styles";
 
 const formSchema = z
   .object({
-    nickName: z
-      .string({ required_error: "O apelido é obrigatório" })
-      .min(6, "O apelido precisa ter no mínimo 6 letras"),
+    nickName: z.string({ required_error: "O apelido é obrigatório" }),
     name: z
       .string({ required_error: "O nome completo é obrigatório" })
       .min(6, "O nome completo precisa ter no mínimo 6 letras"),
@@ -76,6 +74,8 @@ export const AddCardForm = ({ callback }: AddCardFormProps) => {
 
   function onSubmit(data: AddCardProps) {
     try {
+      // !TODO
+      //@ts-ignore
       const newCard = handleFakeAddNewCard({ data });
 
       addCard.mutate({
