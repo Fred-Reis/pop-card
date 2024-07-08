@@ -11,31 +11,40 @@ import { useToasts } from "@/utils/services/toast";
 import { FormInput, CusttomButton } from "@/components";
 
 import { styles } from "./styles";
+import { CardProps } from "@/types/cardDTO";
 
-const formSchema = z.object({
-  value: z.string({ required_error: "O Valor é obrigatório" }),
-  cvv: z
-    .string({ required_error: "O CVV é obrigatório" })
-    .length(3, "O CVV precisa ter 3 dígitos"),
-});
+const formSchema = (item: CardProps) =>
+  z
+    .object({
+      value: z.string({ required_error: "O Valor é obrigatório" }),
+      cvv: z
+        .string({ required_error: "O CVV é obrigatório" })
+        .length(3, "O CVV precisa ter 3 dígitos"),
+    })
+    .refine(({ cvv }) => cvv === item.cvv, {
+      message: "O CVV não confere",
+      path: ["cvv"],
+    });
 
-interface LoginProps {
-  cpf: string;
-  password: string;
-}
-
-export const AddFundsForm = ({ item }) => {
+export const AddFundsForm = ({ item }: { item: CardProps }) => {
   const [instalments, setInstalments] = useState([]);
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState(null);
+  const [error, setError] = useState(null);
 
   const { control, handleSubmit, watch } = useForm({
     mode: "onSubmit",
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema(item)),
   });
 
   function onSubmit(data: any) {
+    if (!value) {
+      setError("Favor selecionar as parcelas");
+      return;
+    }
+
     try {
+      // !TODO IMPLEMENTAR A REQUISIÇÃO DE ADICIONAR DINHEIRO
       useToasts({
         type: "success",
         title: "Login",
@@ -49,17 +58,6 @@ export const AddFundsForm = ({ item }) => {
       });
     }
   }
-
-  const Label = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[styles.dropDownLabel, isFocus && { color: "gray" }]}>
-          Parcelas
-        </Text>
-      );
-    }
-    return null;
-  };
 
   function getInstailments(value) {
     let instailments = [];
@@ -78,6 +76,22 @@ export const AddFundsForm = ({ item }) => {
     }
     return instailments;
   }
+
+  function handleSetInstalment(value) {
+    setValue(value);
+    setError(null);
+  }
+
+  const Label = () => {
+    if (value || isFocus) {
+      return (
+        <Text style={[styles.dropDownLabel, isFocus && { color: "gray" }]}>
+          Parcelas
+        </Text>
+      );
+    }
+    return null;
+  };
 
   watch((value) => {
     setInstalments(getInstailments(value?.value / 100));
@@ -136,10 +150,11 @@ export const AddFundsForm = ({ item }) => {
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={(item) => {
-            setValue(item.value);
+            handleSetInstalment(item.value);
             setIsFocus(false);
           }}
         />
+        {error && <Text style={styles.errorMessage}>{error}</Text>}
       </View>
 
       <CusttomButton message="Confirma" action={handleSubmit(onSubmit)} />

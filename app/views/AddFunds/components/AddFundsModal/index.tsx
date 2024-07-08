@@ -1,10 +1,12 @@
 import { Text, TouchableOpacity, View } from "react-native";
-import { styles } from "./styles";
 import { AddFundsForm } from "../AddFundsForm";
-// import { AddCardForm } from "../AddCardForm";
+import { CardProps } from "@/types/cardDTO";
+
+import { styles } from "./styles";
 
 interface ModalProps {
   closeModal: () => void;
+  item: CardProps;
 }
 
 const Header = ({ closeModal }) => {
@@ -17,12 +19,12 @@ const Header = ({ closeModal }) => {
     </View>
   );
 };
-const AddFundsModal = ({ closeModal }: ModalProps) => {
+const AddFundsModal = ({ closeModal, item }: ModalProps) => {
   return (
     <View style={styles.contentContainer}>
       <Header closeModal={closeModal} />
       <Text style={styles.title}>Insira os dados do seu novo cartão</Text>
-      <AddFundsForm />
+      <AddFundsForm item={item} />
     </View>
   );
 };

@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     gap: 10,
     width: "100%",
-    // backgroundColor: "#ddd",
   },
 
   dropDownContainer: {
@@ -33,10 +32,6 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 8,
     paddingLeft: 20,
-    // backgroundColor: "#ddd",
-  },
-  icon: {
-    marginRight: 5,
   },
 
   dropDownLabel: {
@@ -56,5 +51,11 @@ export const styles = StyleSheet.create({
   inputSearchStyle: {
     height: 40,
     fontSize: 16,
+  },
+
+  errorMessage: {
+    marginVertical: 3,
+    color: "#ec3030",
+    textAlign: "center",
   },
 });

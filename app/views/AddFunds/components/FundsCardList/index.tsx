@@ -14,9 +14,10 @@ interface Props {
 
 export const FundsCardList = ({ data }: Props) => {
   const [showModal, setShowModal] = useState(false);
+  const [item, setItem] = useState<CardProps>();
 
   function handleToggleModal(item: CardProps) {
-    console.log(item);
+    setItem(item);
     setShowModal(!showModal);
   }
 
@@ -42,7 +43,7 @@ export const FundsCardList = ({ data }: Props) => {
       />
 
       <Modal visible={showModal} closeModal={() => setShowModal(false)}>
-        <AddFundsModal closeModal={() => setShowModal(false)} />
+        <AddFundsModal closeModal={() => setShowModal(false)} item={item} />
       </Modal>
     </>
   );
