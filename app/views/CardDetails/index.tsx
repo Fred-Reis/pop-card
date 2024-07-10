@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
 
@@ -16,6 +16,8 @@ import { styles } from "./styles";
 
 export const CardDetails = () => {
   const [showModal, setShowModal] = useState(false);
+  // !TODO FIX TS ERROR
+  // @ts-ignore
   const {
     params,
   }: {

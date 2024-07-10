@@ -24,7 +24,7 @@ const AddFundsModal = ({ closeModal, item }: ModalProps) => {
     <View style={styles.contentContainer}>
       <Header closeModal={closeModal} />
       <Text style={styles.title}>Insira os dados do seu novo cartão</Text>
-      <AddFundsForm item={item} />
+      <AddFundsForm item={item} closeModal={closeModal} />
     </View>
   );
 };

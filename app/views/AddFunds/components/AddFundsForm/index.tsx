@@ -6,12 +6,14 @@ import { useForm } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import { useToasts } from "@/utils/services/toast";
-
 import { FormInput, CusttomButton } from "@/components";
+import { useEditUser } from "@/server/queries/editUser";
+import { useToasts } from "@/utils/services/toast";
+import { CardProps } from "@/types/cardDTO";
 
 import { styles } from "./styles";
-import { CardProps } from "@/types/cardDTO";
+import { useUserStore } from "@/store";
+import { useNavigation } from "@react-navigation/native";
 
 const formSchema = (item: CardProps) =>
   z
@@ -26,7 +28,12 @@ const formSchema = (item: CardProps) =>
       path: ["cvv"],
     });
 
-export const AddFundsForm = ({ item }: { item: CardProps }) => {
+interface AddFundsFormProps {
+  item: CardProps;
+  closeModal: () => void;
+}
+
+export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
   const [instalments, setInstalments] = useState([]);
   const [isFocus, setIsFocus] = useState(false);
   const [value, setValue] = useState(null);
@@ -37,19 +44,35 @@ export const AddFundsForm = ({ item }: { item: CardProps }) => {
     resolver: zodResolver(formSchema(item)),
   });
 
+  const editUser = useEditUser();
+  const { user } = useUserStore();
+  const { navigate } = useNavigation();
+
   function onSubmit(data: any) {
     if (!value) {
       setError("Favor selecionar as parcelas");
       return;
     }
 
+    const newBalance = user.balance + data.value / 100;
+
     try {
-      // !TODO IMPLEMENTAR A REQUISIÇÃO DE ADICIONAR DINHEIRO
+      // !TODO IMPLEMENTAR NOVAS TRANSAÇOES
+
+      editUser.mutate({
+        id: user.id,
+        key: "balance",
+        value: newBalance,
+      });
+
       useToasts({
         type: "success",
-        title: "Login",
-        message: "Login efetuado com sucesso",
+        title: "Saldo adicionado",
+        message: "O seu novo saldo foi adicionado com sucesso",
       });
+
+      closeModal();
+      setTimeout(() => navigate("Home" as never), 500);
     } catch (error) {
       useToasts({
         type: "error",

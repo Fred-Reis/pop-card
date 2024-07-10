@@ -54,7 +54,7 @@
       "password": "123456",
       "token": "asd7asc87asc78a7c986s8975a8sc",
       "main_card_number": "1234123412341234",
-      "balance": "8.960",
+      "balance": 1245.9,
       "currency": "BRL",
       "cards": [
         {
@@ -93,7 +93,7 @@
       "id": "1332016210363045",
       "name": "asdsad",
       "token": "7695cb3a-1c2a-4a5f-a8c6-fb564fd8d443",
-      "balance": "10000",
+      "balance": 0,
       "currency": "BRL",
       "cards": [],
       "main_card_number": "7774285945716816",

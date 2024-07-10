@@ -10,7 +10,7 @@ export interface UserProps {
   account_number: string;
   password?: string;
   token?: string;
-  balance: string;
+  balance: number;
   currency: string;
   cards: CardProps[];
 }
