@@ -23,7 +23,7 @@ interface ItemProps {
 
 export const CardListItem = memo(({ item }: ItemProps) => {
   const { navigate, setOptions } = useNavigation();
-  const { trasactions } = useTransactionsStore();
+  const { transactions } = useTransactionsStore();
 
   function handleNavigate() {
     // !TODO
@@ -35,7 +35,7 @@ export const CardListItem = memo(({ item }: ItemProps) => {
   }
 
   function getTransactionsByCardId() {
-    const transactionsByCardId = trasactions.filter(
+    const transactionsByCardId = transactions.filter(
       (transaction) => transaction.card_id === item.id
     );
     return transactionsByCardId;

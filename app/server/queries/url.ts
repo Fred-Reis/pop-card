@@ -1,5 +1,6 @@
 import api from "@/server/api/api";
 import { UserProps } from "@/types/userDTO";
+import { TransactionProps } from "@/types/transactionDTO";
 
 export const URLS = {
   CARDS: "/cards",
@@ -13,12 +14,16 @@ const getCards = () => {
   return api.get(URLS.CARDS);
 };
 
-const getUsers = () => {
-  return api.get(URLS.USERS);
-};
-
 const getTransactions = () => {
   return api.get(URLS.TRANSACTIONS);
+};
+
+const createTransactions = (_transaction: TransactionProps) => {
+  return api.post(URLS.TRANSACTIONS, _transaction);
+};
+
+const getUsers = () => {
+  return api.get(URLS.USERS);
 };
 
 const createUser = (_user: UserProps) => {
@@ -35,8 +40,9 @@ const editUser = (_id: string, data: any) => {
 
 export const API = {
   GET_CARDS: getCards,
-  GET_USERS: getUsers,
   GET_TRANSACTIONS: getTransactions,
+  CREATE_TRANSACTIONS: createTransactions,
+  GET_USERS: getUsers,
   GET_USER: getUser,
   CREATE_USER: createUser,
   EDIT_USER: editUser,

@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 20,
     alignItems: "center",
     justifyContent: "space-between",
-    gap: 10,
+    gap: 5,
   },
 
   date: {
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   },
 
   statusContainer: {
-    padding: 5,
+    padding: 8,
     justifyContent: "center",
     flexDirection: "row",
   },

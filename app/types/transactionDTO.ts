@@ -4,7 +4,7 @@ export interface TransactionProps {
   card_id: string;
   type: string;
   value: string;
-  date: string;
+  date: Date;
   description: string;
   currency: string;
   status: string;
@@ -13,6 +13,6 @@ export interface TransactionProps {
 
 interface Details {
   stailments: string;
-  stailment_value: string;
-  first_stailment_date: string;
+  stailment_value: number;
+  first_stailment_date: Date;
 }

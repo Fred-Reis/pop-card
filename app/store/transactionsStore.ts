@@ -3,12 +3,12 @@ import { create } from "zustand";
 import { TransactionProps } from "@/types/transactionDTO";
 
 type TransactionsStoreProps = {
-  trasactions: TransactionProps[];
+  transactions: TransactionProps[];
   setTransactions: (newTransactions: TransactionProps[]) => void;
 };
 
 export const useTransactionsStore = create<TransactionsStoreProps>((set) => ({
-  trasactions: [],
+  transactions: [],
   setTransactions: (newTransactions: TransactionProps[]) =>
-    set({ trasactions: newTransactions }),
+    set({ transactions: newTransactions }),
 }));

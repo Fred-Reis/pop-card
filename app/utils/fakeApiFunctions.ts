@@ -2,6 +2,8 @@ import * as Crypto from "expo-crypto";
 
 import { useCardListStore } from "@/store/backEndDataStore";
 import { useFetchAllUsers } from "@/server/queries";
+
+import { TransactionProps } from "@/types/transactionDTO";
 import { SignUpProps } from "@/types/signupDTO";
 import { UserProps } from "@/types/userDTO";
 import { CardProps } from "@/types/cardDTO";
@@ -19,7 +21,6 @@ export interface CreateCardProps {
     cvv: string;
     validate: string;
   };
-  // userId: string;
 }
 
 export const handleFakeLogin = ({ cpf, password }: LoginProps) => {
@@ -44,21 +45,6 @@ export const handleFakeLogin = ({ cpf, password }: LoginProps) => {
   // return user;
 };
 
-// export function handleFakeMapUserCards(
-//   userCardsList: any[],
-//   allCardsList: any[]
-// ) {
-//   const cards = userCardsList.map((userCard) => {
-//     const card = allCardsList.find((card) => card?.type === userCard?.type);
-
-//     return {
-//       ...userCard,
-//     };
-//   });
-
-//   return cards;
-// }
-
 export function handleFakeCreateUser({
   cpf,
   name,
@@ -70,7 +56,7 @@ export function handleFakeCreateUser({
     id: String(Math.random()).substring(2, 18),
     name: name.trim(),
     token: Crypto.randomUUID(),
-    balance: "0",
+    balance: 0,
     currency: "BRL",
     cards: [],
     main_card_number: String(Math.random()).substring(2, 18),
@@ -103,4 +89,27 @@ export const handleFakeAddNewCard = ({ data }: CreateCardProps) => {
   };
 
   return newCard;
+};
+
+export const handleCreateTransaction = (data: any): TransactionProps => {
+  const [stailments, stailment_value] = data.stailments.split("x");
+
+  const newTransaction: TransactionProps = {
+    id: String(Math.random()).substring(2, 18),
+    card_id: data.card_id,
+    user_id: data.user_id,
+    type: "1",
+    value: data.value,
+    date: new Date(),
+    description: data.description,
+    currency: "BRL",
+    status: "1",
+    details: {
+      stailments: stailments,
+      stailment_value: stailment_value,
+      first_stailment_date: new Date(),
+    },
+  };
+
+  return newTransaction;
 };

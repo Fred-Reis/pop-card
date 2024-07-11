@@ -54,7 +54,7 @@
       "password": "123456",
       "token": "asd7asc87asc78a7c986s8975a8sc",
       "main_card_number": "1234123412341234",
-      "balance": 1245.9,
+      "balance": 5699.219999999999,
       "currency": "BRL",
       "cards": [
         {
@@ -132,163 +132,83 @@
   ],
   "transactions": [
     {
-      "id": "1",
+      "id": "0088265854610940",
+      "card_id": "1219564993400893",
       "user_id": "1",
+      "type": "1",
+      "value": "10000",
+      "date": "2024-07-11T01:27:50.739Z",
+      "description": "Desc",
+      "currency": "BRL",
+      "status": "1",
+      "details": {
+        "stailments": "4",
+        "stailment_value": "28.00",
+        "first_stailment_date": "2024-07-11T01:27:50.739Z"
+      }
+    },
+    {
+      "id": "8917745677715946",
+      "card_id": "1219564993400893",
+      "user_id": "1",
+      "type": "1",
+      "value": "100000",
+      "date": "2024-07-11T01:34:31.402Z",
+      "description": "Comras",
+      "currency": "BRL",
+      "status": "1",
+      "details": {
+        "stailments": "10",
+        "stailment_value": "130.00",
+        "first_stailment_date": "2024-07-11T01:34:31.402Z"
+      }
+    },
+    {
+      "id": "3783670525908479",
+      "card_id": "1219564993400893",
+      "user_id": "1",
+      "type": "1",
+      "value": "32000",
+      "date": "2024-07-11T01:38:21.633Z",
+      "description": "Compo",
+      "currency": "BRL",
+      "status": "1",
+      "details": {
+        "stailments": "5",
+        "stailment_value": "73.60",
+        "first_stailment_date": "2024-07-11T01:38:21.633Z"
+      }
+    },
+    {
+      "id": "7375120434082268",
+      "card_id": "1219564993400893",
+      "user_id": "1",
+      "type": "1",
+      "value": "200000",
+      "date": "2024-07-11T01:43:03.608Z",
+      "description": "Addd",
+      "currency": "BRL",
+      "status": "1",
+      "details": {
+        "stailments": "10",
+        "stailment_value": "260.00",
+        "first_stailment_date": "2024-07-11T01:43:03.608Z"
+      }
+    },
+    {
+      "id": "2353769592614532",
       "card_id": "3848822600695376",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "2",
       "user_id": "1",
-      "card_id": "1",
       "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
+      "value": "12000",
+      "date": "2024-07-11T01:53:38.974Z",
+      "description": "Sdf",
       "currency": "BRL",
       "status": "1",
       "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "3",
-      "user_id": "1",
-      "card_id": "3848822600695376",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "4",
-      "user_id": "1",
-      "card_id": "3848822600695376",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "5",
-      "user_id": "1",
-      "card_id": "6667416567520872",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "6",
-      "user_id": "1",
-      "card_id": "6667416567520872",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "7",
-      "user_id": "1",
-      "card_id": "1",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "8",
-      "user_id": "1",
-      "card_id": "6667416567520872",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "9",
-      "user_id": "1",
-      "card_id": "1",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
-      }
-    },
-    {
-      "id": "10",
-      "user_id": "1",
-      "card_id": "3848822600695376",
-      "type": "1",
-      "value": "100.50",
-      "date": "2022-09-01T00:00:00.000Z",
-      "description": "Pagamento de boleto",
-      "currency": "BRL",
-      "status": "1",
-      "details": {
-        "stailments": "10",
-        "stailment_value": "11.50",
-        "first_stailment_date": "2022-09-01T00:00:00.000Z"
+        "stailments": "3",
+        "stailment_value": "43.60",
+        "first_stailment_date": "2024-07-11T01:53:38.974Z"
       }
     }
   ]

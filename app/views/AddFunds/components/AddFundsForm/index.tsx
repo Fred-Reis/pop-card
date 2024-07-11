@@ -5,20 +5,23 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { Dropdown } from "react-native-element-dropdown";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigation } from "@react-navigation/native";
 
 import { FormInput, CusttomButton } from "@/components";
 import { useEditUser } from "@/server/queries/editUser";
 import { useToasts } from "@/utils/services/toast";
 import { CardProps } from "@/types/cardDTO";
-
-import { styles } from "./styles";
 import { useUserStore } from "@/store";
-import { useNavigation } from "@react-navigation/native";
+
+import { handleCreateTransaction } from "@/utils/fakeApiFunctions";
+import { useCreateTransactions } from "@/server/queries/useCreateTransactions";
+import { styles } from "./styles";
 
 const formSchema = (item: CardProps) =>
   z
     .object({
       value: z.string({ required_error: "O Valor é obrigatório" }),
+      description: z.string().optional(),
       cvv: z
         .string({ required_error: "O CVV é obrigatório" })
         .length(3, "O CVV precisa ter 3 dígitos"),
@@ -44,8 +47,10 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
     resolver: zodResolver(formSchema(item)),
   });
 
+  const createTransaction = useCreateTransactions();
   const editUser = useEditUser();
   const { user } = useUserStore();
+
   const { navigate } = useNavigation();
 
   function onSubmit(data: any) {
@@ -55,9 +60,15 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
     }
 
     const newBalance = user.balance + data.value / 100;
+    const newTransaction = handleCreateTransaction({
+      ...data,
+      stailments: value,
+      card_id: item.id,
+      user_id: user.id,
+    });
 
     try {
-      // !TODO IMPLEMENTAR NOVAS TRANSAÇOES
+      createTransaction.mutate(newTransaction);
 
       editUser.mutate({
         id: user.id,
@@ -65,13 +76,14 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
         value: newBalance,
       });
 
+      closeModal();
+
       useToasts({
         type: "success",
         title: "Saldo adicionado",
         message: "O seu novo saldo foi adicionado com sucesso",
       });
 
-      closeModal();
       setTimeout(() => navigate("Home" as never), 500);
     } catch (error) {
       useToasts({
@@ -94,9 +106,10 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
           style: "currency",
           currency: "BRL",
         }).format(instailmentValue + taxesValue)}`,
-        value: i,
+        value: `${i}x${Math.fround(instailmentValue + taxesValue).toFixed(2)}`,
       });
     }
+
     return instailments;
   }
 
@@ -158,6 +171,21 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
         </View>
       </View>
 
+      <View
+        style={{
+          width: "73%",
+          alignItems: "center",
+        }}
+      >
+        <Text style={styles.optionalLabel}>*Opcional</Text>
+        <FormInput
+          control={control}
+          name={"description"}
+          placeholder="Descrição"
+          backgroundColor="#ddd"
+        />
+        <Text style={styles.label}>Descrição</Text>
+      </View>
       <View style={styles.dropDownContainer}>
         <Label />
         <Dropdown

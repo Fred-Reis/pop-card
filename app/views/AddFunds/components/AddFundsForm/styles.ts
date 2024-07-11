@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { optional } from "zod";
 
 export const styles = StyleSheet.create({
   container: {
@@ -10,6 +11,13 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#3e3e3e",
     textAlign: "center",
+  },
+
+  optionalLabel: {
+    marginBottom: 0,
+    alignSelf: "flex-start",
+    color: "#3e3e3e",
+    fontSize: 12,
   },
 
   inputsContainer: {
