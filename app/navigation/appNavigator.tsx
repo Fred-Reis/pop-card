@@ -6,7 +6,7 @@ import { useUserStore } from "@/store";
 
 import { MyTabs } from "./tabs";
 import { Header } from "./components/Header";
-import { Login, CardDetails, SignUp } from "@/views";
+import { Login, CardDetails, SignUp, Account } from "@/views";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,11 +14,7 @@ export const AppStack = () => {
   const { user } = useUserStore();
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        header: ({ route }) => <Header title={route.name} />,
-      }}
-    >
+    <Stack.Navigator>
       {user ? (
         <Stack.Group>
           <Stack.Screen
@@ -36,6 +32,16 @@ export const AppStack = () => {
                   title="Detalhe cartão"
                   color={route.params?.item?.color}
                 />
+              ),
+            }}
+          />
+          <Stack.Screen
+            name="Account"
+            component={Account}
+            options={{
+              title: "Minha Conta",
+              header: ({ route }) => (
+                <Header title="Minha Conta" color={route.params?.item?.color} />
               ),
             }}
           />

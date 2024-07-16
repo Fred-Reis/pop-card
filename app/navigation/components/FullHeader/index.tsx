@@ -2,18 +2,18 @@ import { Text, View, Image, TouchableOpacity } from "react-native";
 
 import { useUserStore } from "@/store";
 
-import hamburguer from "@/assets/icons/hamburguer.png";
 import logout from "@/assets/icons/logout.png";
-import user from "@/assets/icons/user.png";
+import hamburguer from "@/assets/icons/hamburguer.png";
 
 import { styles } from "./styles";
 import { useToasts } from "@/utils/services/toast";
 
 type HeaderProps = {
   title: string;
+  navigation: any;
 };
 
-export const Header = ({ title }: HeaderProps) => {
+export const Header = ({ title, navigation }: HeaderProps) => {
   const { setUser } = useUserStore();
 
   function handleLogout() {
@@ -27,8 +27,8 @@ export const Header = ({ title }: HeaderProps) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity>
-        <Image source={user} resizeMode="contain" style={styles.icon} />
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <Image source={hamburguer} resizeMode="contain" style={styles.icon} />
       </TouchableOpacity>
 
       <Text style={styles.title}>{title}</Text>

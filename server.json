@@ -128,6 +128,29 @@
       "cpf": "33333333333",
       "email": "asd@asd.cd",
       "account_number": "146446"
+    },
+    {
+      "id": "0176864686088589",
+      "name": "Aline",
+      "balance": 100,
+      "currency": "BRL",
+      "cards": [
+        {
+          "id": "4417249621939312",
+          "nick_name": "nu fi",
+          "name": "aline h",
+          "cvv": "123",
+          "validate": "12/43",
+          "number": "1234565654645645",
+          "type": "1",
+          "color": "#993399"
+        }
+      ],
+      "main_card_number": "7189958291973629",
+      "surname": "Horácio",
+      "cpf": "10031957765",
+      "email": "aline@gmail.com",
+      "account_number": "233941"
     }
   ],
   "transactions": [
@@ -209,6 +232,22 @@
         "stailments": "3",
         "stailment_value": "43.60",
         "first_stailment_date": "2024-07-11T01:53:38.974Z"
+      }
+    },
+    {
+      "id": "0963643884156718",
+      "card_id": "4417249621939312",
+      "user_id": "0176864686088589",
+      "type": "1",
+      "value": "10000",
+      "date": "2024-07-11T21:06:20.039Z",
+      "description": "Vaor",
+      "currency": "BRL",
+      "status": "1",
+      "details": {
+        "stailments": "10",
+        "stailment_value": "13.00",
+        "first_stailment_date": "2024-07-11T21:06:20.039Z"
       }
     }
   ]

@@ -6,6 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { darkTheme, defaultTheme } from "@/styles/theme";
 
 import { AppStack } from "./appNavigator";
+import { DrawerStack } from "./drawerNavigator";
 
 export const AppNavigator = () => {
   const colorScheme = useColorScheme();
@@ -14,7 +15,7 @@ export const AppNavigator = () => {
     <NavigationContainer
       theme={colorScheme === "dark" ? darkTheme : defaultTheme}
     >
-      <AppStack />
+      <DrawerStack />
     </NavigationContainer>
   );
 };

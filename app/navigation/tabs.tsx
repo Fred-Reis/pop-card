@@ -17,7 +17,9 @@ export const MyTabs = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        header: ({ route }) => <Header title={route.name} />,
+        header: ({ route, navigation }) => (
+          <Header title={route.name} navigation={navigation} />
+        ),
         tabBarShowLabel: false,
         tabBarStyle: {
           ...styles.tabBar,
