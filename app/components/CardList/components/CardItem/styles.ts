@@ -16,6 +16,14 @@ export const styles = StyleSheet.create({
     width: 140,
     height: 90,
     position: "relative",
+    shadowColor: "#3e3e3e",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.5,
+    elevation: 5,
   },
 
   chip: {

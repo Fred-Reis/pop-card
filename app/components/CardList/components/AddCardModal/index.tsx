@@ -16,7 +16,7 @@ const Header = ({ closeModal }) => {
     </View>
   );
 };
-const AddCardModal = ({ closeModal }: ModalProps) => {
+export const AddCardModal = ({ closeModal }: ModalProps) => {
   return (
     <View style={styles.contentContainer}>
       <Header closeModal={closeModal} />
@@ -25,5 +25,3 @@ const AddCardModal = ({ closeModal }: ModalProps) => {
     </View>
   );
 };
-
-export default AddCardModal;

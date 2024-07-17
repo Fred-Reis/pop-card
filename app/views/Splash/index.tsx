@@ -75,7 +75,7 @@ export const Splash = ({ onComplete }: Props) => {
           style={styles.animation}
           source={require("@/assets/animation.json")}
         />
-        <Text style={styles.message}>Tudo posso naqule que me fortalece.</Text>
+        <Text style={styles.message}>Tudo posso naquele que me fortalece.</Text>
       </LinearGradient>
     </View>
   );

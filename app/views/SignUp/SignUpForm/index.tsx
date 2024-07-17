@@ -10,6 +10,7 @@ import { SignUpProps } from "@/types/signupDTO";
 import { FormInput, CusttomButton, CreatePasswordForm } from "@/components";
 
 import { styles } from "./styles";
+import { useCallback } from "react";
 
 const formSchema = z.object({
   name: z
@@ -41,7 +42,7 @@ export const SignUpForm = ({ setUser, user }: SignupFormProps) => {
     setUser((user) => ({ ...user, password }));
   }
 
-  function onSubmit(data: SignUpProps) {
+  const onSubmit = useCallback((data: SignUpProps) => {
     try {
       const user = { ...data };
       setUser(user);
@@ -52,7 +53,7 @@ export const SignUpForm = ({ setUser, user }: SignupFormProps) => {
         message: error.message,
       });
     }
-  }
+  }, []);
 
   return (
     <>

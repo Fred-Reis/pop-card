@@ -23,13 +23,13 @@ export const CustomTabIcon = ({ focused, icon, text }: Props) => (
       style={[
         styles.image,
         {
-          tintColor: focused ? "rgba(48,249,201,0.8)" : "#FFF",
+          tintColor: focused ? "rgba(48,249,201,0.8)" : "#ddd",
         },
       ]}
     />
     <Text
       style={{
-        color: focused ? "rgba(48,249,201,0.8)" : "#FFF",
+        color: focused ? "rgba(48,249,201,0.8)" : "#ddd",
         fontSize: 12,
       }}
     >

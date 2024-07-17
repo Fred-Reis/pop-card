@@ -51,7 +51,7 @@ export const MyTabs = () => {
               style={{
                 width: 40,
                 height: 40,
-                tintColor: focused ? "rgba(48,249,201,0.8)" : "#fff",
+                tintColor: focused ? "rgba(48,249,201,0.8)" : "#ddd",
               }}
             />
           ),

@@ -1,12 +1,12 @@
 import { FlatList, Text, View } from "react-native";
 
 import { TransactionItem } from "../TransactionItem";
-import { TransacionProps } from "@/types/transactionDTO";
+import { TransactionProps } from "@/types/transactionDTO";
 
 import { styles } from "./styles";
 
 interface Props {
-  data: TransacionProps[];
+  data: TransactionProps[];
 }
 
 export const TransactionsList = ({ data }: Props) => {

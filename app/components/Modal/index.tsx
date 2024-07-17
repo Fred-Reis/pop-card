@@ -18,7 +18,7 @@ const Component = ({ children, visible, closeModal }: ModalProps) => {
         visible={visible}
         onRequestClose={closeModal}
       >
-        <View style={styles.wrapper}>{children}</View>
+        <View style={[styles.wrapper, { flex: 1 }]}>{children}</View>
       </Modal>
     </View>
   );

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { View, Text } from "react-native";
 
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -30,7 +30,7 @@ export const CardDetails = () => {
 
   const addCard = useEditCards();
 
-  const handleRemoveCard = () => {
+  const handleRemoveCard = useCallback(() => {
     try {
       addCard.mutate({
         id: user.id,
@@ -54,7 +54,11 @@ export const CardDetails = () => {
         message: `O cartão ${params.item.nick_name} não foi removido, tente novamente`,
       });
     }
-  };
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -71,11 +75,11 @@ export const CardDetails = () => {
         action={() => setShowModal(true)}
       />
       <TransactionsList data={params.transactions} />
-      <Modal visible={showModal} closeModal={() => setShowModal(false)}>
+      <Modal visible={showModal} closeModal={handleCloseModal}>
         <ConfirmModal
           card={params.item}
           submitAction={handleRemoveCard}
-          closeModal={() => setShowModal(false)}
+          closeModal={handleCloseModal}
         />
       </Modal>
     </View>

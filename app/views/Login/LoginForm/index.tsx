@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Text, View } from "react-native";
 
 import { z } from "zod";
@@ -49,7 +49,7 @@ export const LoginForm = () => {
   const { setUser } = useUserStore();
   const { data: users } = useFetchAllUsers();
 
-  function handleFakeLogin({ cpf, password }: LoginProps) {
+  const handleFakeLogin = useCallback(({ cpf, password }: LoginProps) => {
     const user = users.find((user) => user.cpf === cpf);
 
     if (!user || user?.password !== password) {
@@ -57,7 +57,7 @@ export const LoginForm = () => {
     }
 
     return user;
-  }
+  }, []);
 
   function togglePasswordVisibility() {
     setVisiblePassword(!visiblePassword);

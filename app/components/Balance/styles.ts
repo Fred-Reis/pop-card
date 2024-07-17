@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     alignItems: "baseline",
     justifyContent: "center",
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   currency: {
     fontWeight: "400",
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   },
   value: {
     fontWeight: "400",
-    fontSize: 40,
+    fontSize: 35,
     color: "#3e3e3e",
   },
 });

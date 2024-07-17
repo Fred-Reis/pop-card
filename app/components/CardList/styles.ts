@@ -6,13 +6,13 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "500",
     marginVertical: 4,
-    marginTop: 10,
+    marginTop: 5,
     color: "#3d3d3d",
   },
 
   list: {
     marginTop: 20,
-    maxHeight: 200,
+    maxHeight: 150,
   },
 
   empty: {

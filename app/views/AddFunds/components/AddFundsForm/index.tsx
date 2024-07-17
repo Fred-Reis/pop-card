@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Text, View } from "react-native";
 
 import { z } from "zod";
@@ -53,7 +53,7 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
 
   const { navigate } = useNavigation();
 
-  function onSubmit(data: any) {
+  const onSubmit = useCallback((data: any) => {
     if (!value) {
       setError("Favor selecionar as parcelas");
       return;
@@ -92,7 +92,7 @@ export const AddFundsForm = ({ item, closeModal }: AddFundsFormProps) => {
         message: error.message,
       });
     }
-  }
+  }, []);
 
   function getInstailments(value) {
     let instailments = [];

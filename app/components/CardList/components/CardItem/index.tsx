@@ -21,7 +21,7 @@ interface ItemProps {
   item: CardProps;
 }
 
-export const CardListItem = memo(({ item }: ItemProps) => {
+export const CardItem = memo(({ item }: ItemProps) => {
   const { navigate, setOptions } = useNavigation();
   const { transactions } = useTransactionsStore();
 

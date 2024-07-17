@@ -15,9 +15,9 @@ export const styles = StyleSheet.create({
 
   message: {
     color: "#3e3e3e",
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: "500",
-    marginBottom: 10,
+    marginBottom: 5,
     textAlign: "center",
   },
 });

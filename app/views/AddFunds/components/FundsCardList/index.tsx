@@ -1,5 +1,5 @@
-import { memo, useState } from "react";
-import { View, FlatList, Text, Image } from "react-native";
+import { useCallback, useState } from "react";
+import { FlatList, Text } from "react-native";
 
 import { ModalComponent as Modal } from "@/components";
 import { FundsListItem } from "../FundsCardItem";
@@ -16,10 +16,14 @@ export const FundsCardList = ({ data }: Props) => {
   const [showModal, setShowModal] = useState(false);
   const [item, setItem] = useState<CardProps>();
 
-  function handleToggleModal(item: CardProps) {
+  const handleToggleModal = useCallback((item: CardProps) => {
     setItem(item);
     setShowModal(!showModal);
-  }
+  }, []);
+
+  const handleCloseModal = useCallback(() => {
+    setShowModal(false);
+  }, []);
 
   return (
     <>
@@ -42,8 +46,8 @@ export const FundsCardList = ({ data }: Props) => {
         }}
       />
 
-      <Modal visible={showModal} closeModal={() => setShowModal(false)}>
-        <AddFundsModal closeModal={() => setShowModal(false)} item={item} />
+      <Modal visible={showModal} closeModal={handleCloseModal}>
+        <AddFundsModal closeModal={handleCloseModal} item={item} />
       </Modal>
     </>
   );

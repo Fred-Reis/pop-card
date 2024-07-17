@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
-import { CardListItem, ModalComponent as Modal } from "@/components";
+import { ModalComponent as Modal } from "@/components";
+import { AddCardModal } from "./components/AddCardModal";
+import { CardItem } from "./components/CardItem";
 import { CardProps } from "@/types/cardDTO";
 
 import { styles } from "./styles";
 
 import plus from "@/assets/plus_btn.png";
-import AddCardModal from "./components/AddCardModal";
 
 interface Props {
   data: CardProps[];
@@ -36,7 +37,7 @@ export const CardList = ({ data, ...rest }: Props) => {
       <FlatList
         horizontal
         data={data}
-        renderItem={({ item }) => <CardListItem item={item} />}
+        renderItem={({ item }) => <CardItem item={item} />}
         showsHorizontalScrollIndicator={false}
         snapToAlignment="start"
         decelerationRate={"fast"}
